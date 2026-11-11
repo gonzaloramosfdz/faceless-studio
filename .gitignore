@@ -1,0 +1,12 @@
+node_modules/
+output/
+work/
+models/
+.venv/
+.env
+.env.*
+*.mp4
+*.wav
+*.log
+__pycache__/
+.DS_Store
