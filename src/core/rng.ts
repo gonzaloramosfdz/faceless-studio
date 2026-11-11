@@ -1,6 +1,8 @@
 /** Small seeded generator (mulberry32) so every puzzle can be rebuilt from its seed. */
 export function rng(seed: number) {
-  let a = seed >>> 0;
+  // Scramble first: neighbouring seeds (1, 2, 3...) would otherwise give similar first draws.
+  let a = Math.imul((seed >>> 0) ^ 0x9e3779b9, 0x85ebca6b) >>> 0;
+  a = (a ^ (a >>> 13)) >>> 0;
   const next = () => {
     a = (a + 0x6d2b79f5) >>> 0;
     let t = a;

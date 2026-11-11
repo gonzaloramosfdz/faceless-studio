@@ -22,6 +22,8 @@ export interface Puzzle<P = unknown> {
   params: P;
   /** Number of solver steps; the scene reveals one per step. */
   stepCount: number;
+  /** Seconds of thinking time before the solution. Default 6. */
+  thinkSeconds?: number;
 }
 
 export interface Family<P = unknown> {

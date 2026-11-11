@@ -46,7 +46,7 @@ async function main() {
     execFileSync(python, [path.join(root, 'src/voice/tts.py'), path.join(work, 'job.json'), work], { stdio: 'inherit' }),
   );
   const audio = JSON.parse(readFileSync(path.join(work, 'durations.json'), 'utf8'));
-  const timeline = buildTimeline(lines, audio);
+  const timeline = buildTimeline(lines, audio, puzzle.thinkSeconds);
   writeFileSync(path.join(work, 'timeline.json'), JSON.stringify(timeline));
   await step('audio', () =>
     execFileSync(python, [path.join(root, 'src/edit/mix.py'), path.join(work, 'timeline.json'), path.join(work, 'audio.wav'), String(seed)], { stdio: 'inherit' }),

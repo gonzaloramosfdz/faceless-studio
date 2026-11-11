@@ -13,6 +13,7 @@ const Countdown: React.FC<{ from: number; to: number; size: number }> = ({ from,
   const r = size / 2 - 10;
   const c = 2 * Math.PI * r;
   return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
     <div style={{ position: 'relative', width: size, height: size }}>
       <svg width={size} height={size}>
         <circle cx={size / 2} cy={size / 2} r={r} stroke={theme.line} strokeWidth={12} fill="none" />
@@ -45,6 +46,8 @@ const Countdown: React.FC<{ from: number; to: number; size: number }> = ({ from,
       >
         {left}
       </div>
+    </div>
+      <div style={{ fontFamily: theme.font, fontWeight: 500, fontSize: 34, color: theme.dim }}>Pause the video if you need longer</div>
     </div>
   );
 };
@@ -92,9 +95,9 @@ export const Shell: React.FC<VideoProps> = ({ puzzle, timeline, layout }) => {
   );
 
   const lower = (
-    <div style={{ height: portrait ? 230 : 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ height: portrait ? 250 : 220, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {counting ? (
-        <Countdown from={timeline.countdown.from} to={timeline.countdown.to} size={portrait ? 210 : 180} />
+        <Countdown from={timeline.countdown.from} to={timeline.countdown.to} size={portrait ? 180 : 150} />
       ) : (
         <Captions timeline={timeline} size={portrait ? 68 : 56} />
       )}

@@ -2,14 +2,15 @@ import type { Line, Timeline, TimedLine, SfxEvent } from './types';
 
 export const FPS = 30;
 const GAP = 0.3; // seconds of silence between sentences
-const COUNTDOWN = 3; // seconds for the viewer to think
 const TAIL = 1.6; // hold on the solved puzzle
 
 /** Lays sentences on a frame grid from their measured audio lengths. */
 export function buildTimeline(
   lines: Line[],
   audio: Record<string, { file: string; seconds: number }>,
+  thinkSeconds = 6,
 ): Timeline {
+  const COUNTDOWN = thinkSeconds;
   const f = (s: number) => Math.round(s * FPS);
   let t = 0.4;
   const timed: TimedLine[] = [];
