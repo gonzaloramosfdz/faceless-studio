@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { openIssue } from '../publish/github';
 import { refresh } from '../publish/meta';
 import { check as ytCheck } from '../publish/youtube';
+import { PLATFORMS } from '../script/queue';
 
 const problems: string[] = [];
 try {
@@ -12,7 +13,7 @@ try {
 } catch (e) {
   problems.push(`YouTube: ${(e as Error).message}. Re-authorize and replace the YT_REFRESH_TOKEN secret (RUNBOOK.md, "Refresh tokens").`);
 }
-try {
+if (PLATFORMS.includes('instagram')) try {
   const r = await refresh();
   console.log(`Instagram login works for @${r.username}; renewed token is valid for ${r.days} days`);
   if (process.env.GH_ADMIN_TOKEN) {

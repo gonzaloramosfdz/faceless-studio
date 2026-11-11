@@ -2,7 +2,12 @@ import type { Line } from '../core/types';
 import { readJson, writeJson } from '../core/util';
 
 export type Platform = 'youtube' | 'instagram';
-export const PLATFORMS: Platform[] = ['youtube', 'instagram'];
+const ALL: Platform[] = ['youtube', 'instagram'];
+/** Platforms that are switched on, from the PLATFORMS repo variable (comma-separated). YouTube only by default. */
+export const PLATFORMS: Platform[] = (process.env.PLATFORMS || 'youtube')
+  .split(',')
+  .map((s) => s.trim().toLowerCase())
+  .filter((s): s is Platform => (ALL as string[]).includes(s));
 
 export interface PlatformResult {
   state: 'published' | 'private' | 'held' | 'skipped' | 'error';

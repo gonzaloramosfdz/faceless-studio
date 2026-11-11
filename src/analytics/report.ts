@@ -5,7 +5,7 @@ import { openIssue } from '../publish/github';
 import { instagramStats } from '../publish/meta';
 import * as youtube from '../publish/youtube';
 import { discoverIdeas } from '../script/plan';
-import { IDEA_GAP_DAYS, loadHistory, loadQueue, type Platform } from '../script/queue';
+import { IDEA_GAP_DAYS, PLATFORMS, loadHistory, loadQueue, type Platform } from '../script/queue';
 
 const today = localDate();
 const history = loadHistory();
@@ -21,7 +21,7 @@ const safe = async <T>(name: string, fn: () => Promise<T>, fallback: T): Promise
 };
 const stats = {
   youtube: await safe('youtube', () => youtube.stats(ids('youtube')), {}),
-  instagram: await safe('instagram', () => instagramStats(ids('instagram')), {}),
+  instagram: PLATFORMS.includes('instagram') ? await safe('instagram', () => instagramStats(ids('instagram')), {}) : {},
 };
 
 const rows = recent.map((h) => {

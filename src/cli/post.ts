@@ -51,7 +51,9 @@ const attempt = async (p: Platform, fn: () => Promise<{ id: string; url: string 
 const inReview = (p: Platform) => review[p] < REVIEW_POSTS;
 const yt = youtubeMeta(item);
 await attempt('youtube', () => youtube.upload({ file: r.video, ...yt, privacy: inReview('youtube') ? 'private' : 'public' }), inReview('youtube') ? 'private' : 'published');
-if (inReview('instagram')) {
+if (!PLATFORMS.includes('instagram')) {
+  // Instagram is switched off.
+} else if (inReview('instagram')) {
   // Instagram has no draft mode: the video waits as a workflow artifact until it is approved.
   if (!item.platforms.instagram) item.platforms.instagram = { state: 'held' };
   save();

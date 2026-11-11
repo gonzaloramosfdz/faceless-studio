@@ -59,6 +59,10 @@ A failed post is safe to re-run: platforms that already succeeded are skipped.
 - **Instagram:** the token lasts 60 days. The login check renews it twice a month and, if the `GH_ADMIN_TOKEN` secret is set, saves the new one by itself. Without that secret it opens an issue asking you to generate a new token in the Meta app dashboard (SETUP.md, block 3) and replace `IG_ACCESS_TOKEN`. A token that has already expired cannot be renewed, only regenerated. The `GH_ADMIN_TOKEN` itself expires on the date you chose; GitHub emails you before it does.
 - Never paste a token into an issue, a commit or a chat. Only into GitHub's secret form.
 
+## Adding Instagram later
+
+Do block 3 of `SETUP.md` (token in the `IG_ACCESS_TOKEN` secret), then set the repo variable `PLATFORMS` to `youtube,instagram`. Instagram then starts its own 5-post review period.
+
 ## Turning the weekly long-form video on
 
 Set the repo variable `LONGFORM_ENABLED` to `true`. The Sunday job then uploads a 16:9 compilation of the week's best puzzles to YouTube. It is off by default.

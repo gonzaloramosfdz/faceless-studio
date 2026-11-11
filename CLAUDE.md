@@ -1,6 +1,6 @@
 # faceless-studio
 
-Automated physics puzzle channel ("predict, then watch"). English. YouTube Shorts and Instagram Reels. Facebook and TikTok dropped. Weekly long-form is built but off (`LONGFORM_ENABLED`). Budget $0. Public repo. Full plan: PLAN.md. Research cache: research/ (reuse if under 30 days old).
+Automated physics puzzle channel ("predict, then watch"). English. YouTube Shorts only for now; Instagram Reels is built but off (repo variable `PLATFORMS`, default `youtube`; set `youtube,instagram` to add it). Facebook and TikTok dropped. Weekly long-form is built but off (`LONGFORM_ENABLED`). Budget $0. Public repo. Full plan: PLAN.md. Research cache: research/ (reuse if under 30 days old).
 
 ## Rules that always apply
 - The daily pipeline is plain code. No Claude session, no extensions.
