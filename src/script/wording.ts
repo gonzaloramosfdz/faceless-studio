@@ -16,10 +16,11 @@ const numbers = (s: string) => (s.match(/\d+(\.\d+)?/g) ?? []).sort().join(',');
 const trim = (s: string, n: number) => (s.length <= n ? s : s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…');
 
 export function templateWording(p: Puzzle, lines: Line[]): Wording {
-  const ask = lines.filter((l) => l.kind === 'hook').pop()!.text;
+  // Label plus the first sentence of the setup, so template titles differ from one puzzle to the next.
+  const setup = p.question.split(/(?<=[.?!])\s/)[0].replace(/\.$/, '');
   return {
     lines,
-    title: trim(`${ask} Physics puzzle`, 90),
+    title: trim(`${p.label.replace(/[?:]$/, '')}? ${setup}`, 90),
     description: `${p.question}\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\n${DISCLOSURE}`,
     tags: [...BASE_TAGS, p.family.replace(/-/g, '')],
     source: 'template',
@@ -75,13 +76,9 @@ export async function wordBatch(items: { id: string; puzzle: Puzzle; lines: Line
           { role: 'user', content: JSON.stringify(items.map((it) => ({ id: it.id, question: it.puzzle.question, answer: it.puzzle.answer, lines: it.lines.map((l) => l.text) }))) },
         ],
       });
-    // Two documented GitHub Models endpoints; the second is the older one and takes the model name without its publisher.
     const endpoints: [string, string][] = process.env.LLM_ENDPOINT
       ? [[process.env.LLM_ENDPOINT, model]]
-      : [
-          ['https://models.github.ai/inference/chat/completions', model],
-          ['https://models.inference.ai.azure.com/chat/completions', model.split('/').pop()!],
-        ];
+      : [['https://models.github.ai/inference/chat/completions', model]];
     let data: any;
     const failures: string[] = [];
     for (const [url, m] of endpoints) {
@@ -89,7 +86,7 @@ export async function wordBatch(items: { id: string; puzzle: Puzzle; lines: Line
       try {
         res = await fetch(url, {
           method: 'POST',
-          redirect: 'manual',
+          signal: AbortSignal.timeout(45000),
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
           body: body(m),
         });

@@ -45,5 +45,8 @@ Node 22 + TypeScript (tsx), Remotion 4 for visuals, Python (kokoro-onnx) for voi
 ## Measured (4-CPU machine, same size as the public-repo runner)
 - Voice about 2 s per sentence plus about 10 s model load. Render about 60 to 80 s for a 40 to 60 s video. Whole video under 2 minutes.
 
-## Not verified yet
-- Nothing has run on GitHub Actions. Meta app access without app review, GitHub Models limits, and action versions are untested until the repo exists.
+## Cloud status (2026-11-11)
+- Repo: github.com/gonzaloramosfdz/faceless-studio (public). `gh` GraphQL is blocked in Claude sessions: use `gh api` REST calls.
+- Post dry run on GitHub Actions passes: about 2 min warm, 2.5 min cold. Caches work.
+- GitHub Models returns a plain "OK" body (HTTP 200, text/plain) for every request from this repo, including the catalog. LLM wording therefore falls back to the template. Unresolved; do not spend time on it without new information.
+- Not yet tested: real uploads (no platform secrets yet), weekly workflow, publish-approved, login check.
