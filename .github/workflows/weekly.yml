@@ -1,0 +1,64 @@
+name: Weekly batch
+# Sunday: stats report, long-form video, then plans and words the next 14 posts.
+on:
+  schedule:
+    - cron: "17 9 * * 0" # Sunday 03:17 Monterrey
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Plan and render only, upload and commit nothing
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+  models: read
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    if: github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Tests
+        run: npm test 2>&1 | tail -n 15 | tee run.log
+      - name: Weekly report
+        if: env.DRY != 'true'
+        run: |
+          set -o pipefail
+          run() { npx tsx src/analytics/report.ts 2>&1 | tee -a run.log; }
+          run || { sleep 60; run; }
+      - name: Long-form video
+        run: |
+          set -o pipefail
+          flags=(); [ "$DRY" = "true" ] && flags+=(--dry-run)
+          run() { npx tsx src/cli/longform.ts "${flags[@]}" 2>&1 | tee -a run.log; }
+          run || { sleep 60; run; }
+      - name: Plan next 14 posts
+        run: |
+          set -o pipefail
+          run() { npx tsx src/cli/batch.ts --days 7 2>&1 | tee -a run.log; }
+          run || { sleep 60; run; }
+      - uses: ./.github/actions/finish
+        if: always()
+        with:
+          commit: ${{ env.DRY != 'true' }}
+          message: Weekly batch and report

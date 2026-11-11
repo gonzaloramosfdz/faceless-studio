@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "tsx --test src/**/*.test.ts",
+    "test": "tsx --test \"src/**/*.test.ts\"",
     "make": "tsx src/cli/make.ts",
     "models": "bash scripts/fetch-models.sh"
   },

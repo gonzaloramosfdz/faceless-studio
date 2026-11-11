@@ -1,0 +1,72 @@
+name: Post
+# Renders one puzzle and publishes it. Runs twice a day; times are in UTC (Monterrey is UTC-6 all year).
+on:
+  schedule:
+    - cron: "30 17 * * *" # 11:30 Monterrey
+    - cron: "30 23 * * *" # 17:30 Monterrey
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Render only, upload nothing
+        type: boolean
+        default: true
+      id:
+        description: Queue id to post (blank = next due)
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+  models: read
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  post:
+    # The schedule only runs once the repo variable SCHEDULE_ENABLED is set to "true".
+    if: github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Render and post
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          POST_ID: ${{ inputs.id }}
+        run: |
+          set -o pipefail
+          args=()
+          [ -n "$POST_ID" ] && args+=(--id "$POST_ID")
+          if [ "$DRY" = "true" ]; then
+            args+=(--dry-run)
+            # A dry run on an empty queue plans one day first; nothing is committed.
+            npx tsx src/cli/batch.ts --days 1 --start "$(TZ=America/Monterrey date +%F)" 2>&1 | tee run.log
+          fi
+          run() { npx tsx src/cli/post.ts "${args[@]}" 2>&1 | tee -a run.log; }
+          run || { echo "First attempt failed; retrying once in 60 s"; sleep 60; run; }
+      - name: Keep video for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ github.run_id }}
+          path: output/post/*.mp4
+          retention-days: 7
+          if-no-files-found: ignore
+      - uses: ./.github/actions/finish
+        if: always()
+        with:
+          commit: ${{ env.DRY != 'true' }}
+          message: Record post

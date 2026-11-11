@@ -84,7 +84,8 @@ export const Shell: React.FC<VideoProps> = ({ puzzle, timeline, layout }) => {
           marginTop: 28,
           fontFamily: theme.font,
           fontWeight: 500,
-          fontSize: portrait ? 46 : 44,
+          // Long questions shrink so the board keeps its space.
+          fontSize: (portrait ? 46 : 44) * (puzzle.question.length > 210 ? 0.74 : puzzle.question.length > 150 ? 0.86 : 1),
           lineHeight: 1.25,
           color: theme.dim,
         }}

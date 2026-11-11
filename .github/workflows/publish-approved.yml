@@ -1,0 +1,52 @@
+name: Publish approved
+# Run by hand to approve a post that is waiting in the review queue.
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: Queue id from the review issue, e.g. 2026-11-16-1
+        required: true
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      POST_ID: ${{ inputs.id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with:
+          render: "false"
+      - name: Fetch the held video
+        run: |
+          run_id=$(node -e 'const q=require("./data/queue.json").find(x=>x.id===process.env.POST_ID); console.log(q&&q.runId||"")')
+          mkdir -p held
+          [ -n "$run_id" ] && gh run download "$run_id" -n "video-$run_id" -D held || echo "no held video (fine if only YouTube was waiting)"
+      - name: Publish
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: |
+          set -o pipefail
+          run() { npx tsx src/cli/approve.ts --id "$POST_ID" --video "held/$POST_ID.mp4" 2>&1 | tee -a run.log; }
+          run || { sleep 60; run; }
+      - uses: ./.github/actions/finish
+        if: always()
+        with:
+          message: Approve ${{ inputs.id }}

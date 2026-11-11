@@ -13,24 +13,37 @@ Automated math and logic puzzle channel. English. YouTube (Shorts + weekly long-
 Node 22 + TypeScript (tsx), Remotion 4 for visuals, Python (kokoro-onnx) for voice, numpy for SFX/music/mix, FFmpeg for mux.
 
 ## Commands
-- `npm test` runs every family's solver tests.
+- `npm test` runs every family's solver tests plus planner and wording tests.
 - `npm run models` downloads the voice model into models/.
 - `npm run make -- --family <id> --seed <n> --out output/test [--layout landscape]` renders one video.
+- `npx tsx src/cli/batch.ts --days 7` plans posts into data/queue.json (LLM wording if GITHUB_TOKEN is set, else template).
+- `npx tsx src/cli/post.ts --dry-run` renders the next due post without uploading.
 - Local Chrome: set `CHROME_PATH` to a chrome-headless-shell binary if Remotion cannot download its own.
+- Local secrets for testing: `.env` (gitignored), run with `node --env-file=.env --import tsx <file>`.
+
+## How a puzzle works
+"Predict, then watch": setup, three choices, thinking timer, the simulation plays, one-sentence reason. Each family is `src/puzzles/<id>/index.ts` (generator + physics + template narration), `Board.tsx` (SVG simulation), `<id>.test.ts` (300 seeds checked against an independent simulation). Reference family: `freefall`.
+- `key` is `family:variant:params`; `family:variant` is the idea. The planner never repeats an idea within 12 days (needs 24+ ideas) and never repeats a key.
+- Lines: h1, h2 (hook), s0 (step 0, simulation plays), s1 (answer), s2 (why), f1 (final).
+- `magic-square` and `motion` are older calculation-style families; `magic-square` is excluded from rotation in `src/script/plan.ts`.
 
 ## File map
-- `src/core/types.ts` contracts: Puzzle, Family, Line, Timeline, VideoProps.
-- `src/core/timeline.ts` sentence audio lengths -> frames, countdown, reveal frames, SFX events.
-- `src/puzzles/<family>/index.ts` generator + solver + template narration; `Board.tsx` scene; `*.test.ts`.
-- `src/puzzles/registry.ts` and `src/visuals/boards.ts` register each family (both must be updated).
-- `src/visuals/` Remotion root, layout shell, captions, theme.
-- `src/voice/tts.py` voice; `src/edit/mix.py` audio; `src/cli/make.ts` end-to-end render.
-- `src/trend|script|package|publish|analytics/` not built yet.
+- `src/core/` types, rng, timeline, render (end-to-end video), util (dates, json, http).
+- `src/puzzles/<family>/`, `src/puzzles/registry.ts`, `src/visuals/boards.ts` (register a family in both).
+- `src/visuals/` Remotion root, Shell (layout), Captions, quiz (useSimTime, Choices, Fact), Work, theme.
+- `src/voice/tts.py` Kokoro voice; `src/edit/mix.py` voice + generated SFX and music.
+- `src/script/` queue model, plan (weekly planner), wording (one LLM call, validated, template fallback).
+- `src/package/metadata.ts` per-platform text + AI disclosure.
+- `src/publish/` youtube, meta (Instagram + Facebook Reels), github (issues).
+- `src/analytics/report.ts` weekly stats, family weights, report issue.
+- `src/cli/` make, batch, post, approve, longform, tokencheck.
+- `.github/workflows/` post (2x daily), weekly, publish-approved, token-check; `.github/actions/` setup, finish.
+- `data/` queue.json, history.json (dedup record), review.json, weights.json, analytics/.
+- Docs: PLAN.md, RUNBOOK.md (operate), SETUP.md (accounts and secrets), TOOLS.md, licenses.md.
 - `.claude/agents/` 8 subagents (models set in each file). Max 3 at once.
 
-## Status (2026-11-11)
-Built: magic-square family, full local render (47 s video in about 1 min 45 s on 4 CPUs).
-Next: 5 more families, weekly batch + LLM wording, packaging, publishing, workflows.
+## Measured (4-CPU machine, same size as the public-repo runner)
+- Voice about 2 s per sentence plus about 10 s model load. Render about 60 to 80 s for a 40 to 60 s video. Whole video under 2 minutes.
 
-## Measured
-- Voice: about 2 s per sentence. Render: about 70 s for 47 s of 1080x1920 video. Remotion stays; Manim fallback not needed.
+## Not verified yet
+- Nothing has run on GitHub Actions. Meta app access without app review, GitHub Models limits, and action versions are untested until the repo exists.

@@ -1,0 +1,42 @@
+name: Finish
+description: Saves pipeline state to the repo, reports a failure as an issue, and deletes temporary files.
+inputs:
+  commit:
+    description: Set to "false" for dry runs.
+    default: "true"
+  message:
+    description: Commit message.
+    default: Update pipeline data
+runs:
+  using: composite
+  steps:
+    - if: always() && inputs.commit == 'true'
+      shell: bash
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add data
+        if ! git diff --cached --quiet; then
+          git commit -q -m "${{ inputs.message }}"
+          git pull -q --rebase
+          git push -q
+        fi
+    - if: failure()
+      shell: bash
+      run: |
+        step=$(gh run view "$GITHUB_RUN_ID" --json jobs -q '[.jobs[].steps[] | select(.conclusion=="failure") | .name][0]' 2>/dev/null || true)
+        {
+          echo "**Workflow:** $GITHUB_WORKFLOW"
+          echo "**Failing step:** ${step:-unknown}"
+          echo "**Run:** $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo
+          echo "The step was already retried once. Last lines of its output:"
+          echo '```'
+          tail -n 20 run.log 2>/dev/null | sed -E 's/[A-Za-z0-9_\-]{40,}/[redacted]/g'
+          echo '```'
+          echo "See RUNBOOK.md, \"Reading failures\"."
+        } > failure.md
+        gh issue create --title "Pipeline failure: $GITHUB_WORKFLOW (${step:-unknown step})" --body-file failure.md --label failure || gh issue create --title "Pipeline failure: $GITHUB_WORKFLOW" --body-file failure.md
+    - if: always()
+      shell: bash
+      run: rm -rf output work run.log failure.md held

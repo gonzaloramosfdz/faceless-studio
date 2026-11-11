@@ -161,3 +161,17 @@ None. The `gh` CLI covers repo, secrets, issues and workflow runs. `TOOLS.md` wi
 3. Remaining four families, voice, edit, packaging.
 4. One local test video in `output/test/`. Stop and show it.
 5. Workflows and a cloud dry run. Stop and show the log and duration.
+
+## Changes since approval (2026-11-11)
+
+Decided with the owner after the first test videos:
+
+- **Content:** simple, surprising physics for college students and adults, in a "predict, then watch" format (three choices, thinking timer, simulation, one-sentence reason). This replaces the calculation-style math puzzles listed above.
+- **Families:** falling objects, ramp races, pendulums, seesaw, gears, projectiles, collisions, plus the speed-trap calculation family. The magic square is kept in the code but not scheduled.
+- **Thinking time:** 6 to 8 seconds with a "pause the video" prompt, up from 3.
+- **12-day rule:** an idea (`family:variant`) is never repeated within 12 days. This needs at least 24 ideas; the weekly report shows the count and warns when new variants are needed.
+- **Music and SFX:** synthesized by our own code instead of CC0 tracks, so there is nothing to license and each video's music differs.
+- **Voice runtime:** kokoro-onnx (Python) with model files from GitHub releases; captions are timed from the script.
+- **Data files:** `data/queue.json` and `data/history.json` instead of `published.json`.
+- **Schedule switch:** scheduled runs are gated by the repo variable `SCHEDULE_ENABLED`, so the workflows can be pushed before the accounts exist.
+- **Instagram upload:** Meta's resumable upload is used, so no public file URL or temporary release is needed.
