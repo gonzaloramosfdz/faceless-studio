@@ -175,3 +175,5 @@ Decided with the owner after the first test videos:
 - **Data files:** `data/queue.json` and `data/history.json` instead of `published.json`.
 - **Schedule switch:** scheduled runs are gated by the repo variable `SCHEDULE_ENABLED`, so the workflows can be pushed before the accounts exist.
 - **Instagram upload:** Meta's resumable upload is used, so no public file URL or temporary release is needed.
+- **Platforms (later change):** Facebook dropped; YouTube Shorts and Instagram Reels only. Instagram uses Instagram Login (no Facebook Page), with the video served from a temporary GitHub release because that path takes a public URL. The weekly long-form video is off until `LONGFORM_ENABLED` is set.
+- **LLM wording:** GitHub Models did not return usable replies from this repo, so narration and titles currently come from the templates.

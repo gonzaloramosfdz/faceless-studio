@@ -1,8 +1,8 @@
 name: Login check
-# Monthly: confirms the YouTube and Meta logins still work and warns before a token expires.
+# Twice a month: confirms the YouTube and Instagram logins work and renews the 60-day Instagram token.
 on:
   schedule:
-    - cron: "41 10 1 * *"
+    - cron: "41 10 1,15 * *"
   workflow_dispatch:
 
 permissions:
@@ -27,7 +27,6 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
-          META_APP_ID: ${{ secrets.META_APP_ID }}
-          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_ADMIN_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: npx tsx src/cli/tokencheck.ts

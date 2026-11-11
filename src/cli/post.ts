@@ -6,7 +6,7 @@ import { renderVideo } from '../core/render';
 import { arg, flag, localDate } from '../core/util';
 import { reelCaption, youtubeMeta } from '../package/metadata';
 import { openIssue, runUrl } from '../publish/github';
-import { facebookReel, instagramReel } from '../publish/meta';
+import { instagramReel } from '../publish/meta';
 import * as youtube from '../publish/youtube';
 import { PLATFORMS, REVIEW_POSTS, loadHistory, loadQueue, loadReview, saveHistory, saveQueue, type Platform, type QueueItem } from '../script/queue';
 
@@ -51,14 +51,12 @@ const attempt = async (p: Platform, fn: () => Promise<{ id: string; url: string 
 const inReview = (p: Platform) => review[p] < REVIEW_POSTS;
 const yt = youtubeMeta(item);
 await attempt('youtube', () => youtube.upload({ file: r.video, ...yt, privacy: inReview('youtube') ? 'private' : 'public' }), inReview('youtube') ? 'private' : 'published');
-for (const p of ['instagram', 'facebook'] as const) {
-  if (inReview(p)) {
-    // These platforms have no draft mode: the video waits as a workflow artifact until it is approved.
-    if (!item.platforms[p]) item.platforms[p] = { state: 'held' };
-    save();
-  } else {
-    await attempt(p, () => (p === 'instagram' ? instagramReel(r.video, reelCaption(item)) : facebookReel(r.video, reelCaption(item))), 'published');
-  }
+if (inReview('instagram')) {
+  // Instagram has no draft mode: the video waits as a workflow artifact until it is approved.
+  if (!item.platforms.instagram) item.platforms.instagram = { state: 'held' };
+  save();
+} else {
+  await attempt('instagram', () => instagramReel(r.video, reelCaption(item), item.id), 'published');
 }
 
 const waiting = PLATFORMS.filter((p) => ['private', 'held'].includes(item.platforms[p]?.state ?? ''));

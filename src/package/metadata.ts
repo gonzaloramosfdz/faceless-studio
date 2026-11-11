@@ -10,7 +10,7 @@ export function youtubeMeta(item: QueueItem) {
     tags: item.tags,
   };
 }
-/** Instagram and Facebook take a single caption. */
+/** Instagram takes a single caption. */
 export function reelCaption(item: QueueItem) {
   return `${item.title}\n\n${item.description}\n\n${hashtags(item.tags)}`.slice(0, 2100);
 }

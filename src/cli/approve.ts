@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs';
 import { arg } from '../core/util';
 import { reelCaption } from '../package/metadata';
 import { closeIssue } from '../publish/github';
-import { facebookReel, instagramReel } from '../publish/meta';
+import { instagramReel } from '../publish/meta';
 import * as youtube from '../publish/youtube';
 import { PLATFORMS, loadHistory, loadQueue, loadReview, saveHistory, saveQueue, saveReview } from '../script/queue';
 
@@ -22,7 +22,7 @@ for (const p of PLATFORMS) {
       item.platforms[p] = { ...cur, state: 'published' };
     } else if (cur?.state === 'held') {
       if (!existsSync(video)) throw new Error('held video not found; the artifact may have expired (7 days). Re-run the post with its id.');
-      const res = p === 'instagram' ? await instagramReel(video, reelCaption(item)) : await facebookReel(video, reelCaption(item));
+      const res = await instagramReel(video, reelCaption(item), item.id);
       item.platforms[p] = { state: 'published', ...res };
     } else continue;
     review[p]++;

@@ -7,8 +7,8 @@ How to operate the channel once it is running. Everything here works from a phon
 | Workflow | When (Monterrey time) | What it does |
 |---|---|---|
 | Post | 11:30 and 17:30 daily | Renders the next planned puzzle and publishes it |
-| Weekly batch | Sunday 03:17 | Stats report issue, long-form video, plans the next 14 posts |
-| Login check | 1st of the month | Tests the YouTube and Meta logins, warns before they expire |
+| Weekly batch | Sunday 03:17 | Stats report issue, plans the next 14 posts (long-form video only if `LONGFORM_ENABLED` is `true`) |
+| Login check | 1st and 15th of the month | Tests the YouTube and Instagram logins and renews the Instagram token |
 | Publish approved | Only when you run it | Publishes a post waiting in the review queue |
 
 Scheduled runs only happen while the repo variable `SCHEDULE_ENABLED` is `true`.
@@ -34,7 +34,7 @@ Each waiting post has an issue titled "Review: …".
 - **Approve:** Actions → Publish approved → Run workflow → enter the id from the issue (for example `2026-11-16-1`).
 - **Reject:** close the issue. The private YouTube upload stays private; delete it in YouTube Studio if you want.
 - After 5 approvals on a platform, that platform publishes automatically. The counters are in `data/review.json`; set a number back to 0 to return that platform to review.
-- A held Instagram or Facebook video expires after 7 days. If it expired, run Post with the same id and dry run off to render it again.
+- A held Instagram video expires after 7 days. If it expired, run Post with the same id and dry run off to render it again.
 
 ## Reading failures
 
@@ -44,7 +44,7 @@ A failed run retries once, then opens an issue titled "Pipeline failure: …" wi
 |---|---|---|
 | `missing secrets` | A secret is not set | Add it under Settings → Secrets and variables → Actions |
 | `oauth2.googleapis.com … 400` or `invalid_grant` | YouTube login expired or revoked | "Refresh tokens" below |
-| `graph.facebook.com … 190` or `OAuthException` | Meta token expired or revoked | "Refresh tokens" below |
+| `graph.instagram.com … 190` or `OAuthException` | Instagram token expired or revoked | "Refresh tokens" below |
 | `quotaExceeded` or `uploadLimitExceeded` | YouTube daily limit hit | Wait a day; nothing else to do |
 | `nothing due` with 0 items queued | The queue is empty | Run Weekly batch with dry run off |
 | `puzzle changed since it was planned` | Puzzle code was edited after planning | Run Weekly batch again; delete the stale entry from `data/queue.json` |
@@ -56,8 +56,16 @@ A failed post is safe to re-run: platforms that already succeeded are skipped.
 ## Refresh tokens
 
 - **YouTube:** the refresh token lasts as long as the Google app is "In production" and is used at least once every 6 months. If it dies, repeat the YouTube authorization step in `SETUP.md` and replace the `YT_REFRESH_TOKEN` secret.
-- **Meta:** a page token made from a long-lived user token should not expire, but Meta can revoke it (password change, removed permission). The monthly login check reports the expiry date. To renew, repeat the Meta token step in `SETUP.md` and replace `META_PAGE_TOKEN`.
+- **Instagram:** the token lasts 60 days. The login check renews it twice a month and, if the `GH_ADMIN_TOKEN` secret is set, saves the new one by itself. Without that secret it opens an issue asking you to generate a new token in the Meta app dashboard (SETUP.md, block 3) and replace `IG_ACCESS_TOKEN`. A token that has already expired cannot be renewed, only regenerated. The `GH_ADMIN_TOKEN` itself expires on the date you chose; GitHub emails you before it does.
 - Never paste a token into an issue, a commit or a chat. Only into GitHub's secret form.
+
+## Turning the weekly long-form video on
+
+Set the repo variable `LONGFORM_ENABLED` to `true`. The Sunday job then uploads a 16:9 compilation of the week's best puzzles to YouTube. It is off by default.
+
+## How Instagram uploads work
+
+Instagram downloads the video from a public address. The job attaches the file to a temporary GitHub release, publishes, and deletes the release within minutes. If you ever see a release named "Temporary upload" left behind, delete it.
 
 ## Keeping ideas fresh
 

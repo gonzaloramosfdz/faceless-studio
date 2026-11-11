@@ -1,8 +1,8 @@
 import type { Line } from '../core/types';
 import { readJson, writeJson } from '../core/util';
 
-export type Platform = 'youtube' | 'instagram' | 'facebook';
-export const PLATFORMS: Platform[] = ['youtube', 'instagram', 'facebook'];
+export type Platform = 'youtube' | 'instagram';
+export const PLATFORMS: Platform[] = ['youtube', 'instagram'];
 
 export interface PlatformResult {
   state: 'published' | 'private' | 'held' | 'skipped' | 'error';
@@ -44,5 +44,5 @@ export const loadHistory = () => readJson<QueueItem[]>('history.json', []);
 export const saveHistory = (h: QueueItem[]) => writeJson('history.json', h);
 
 /** Approved posts per platform. A platform publishes automatically once it reaches REVIEW_POSTS. */
-export const loadReview = () => readJson<Record<Platform, number>>('review.json', { youtube: 0, instagram: 0, facebook: 0 });
+export const loadReview = () => readJson<Record<Platform, number>>('review.json', { youtube: 0, instagram: 0 });
 export const saveReview = (r: Record<Platform, number>) => writeJson('review.json', r);

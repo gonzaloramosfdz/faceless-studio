@@ -1,6 +1,6 @@
 ---
 name: publisher
-description: Maintains uploads to YouTube, Instagram and Facebook through official APIs and the review queue.
+description: Maintains uploads to YouTube and Instagram through official APIs and the review queue.
 model: sonnet
 ---
 You own `src/publish/` in faceless-studio. Read CLAUDE.md first, then only the files your task names.

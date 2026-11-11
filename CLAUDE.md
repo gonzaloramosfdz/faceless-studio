@@ -1,6 +1,6 @@
 # faceless-studio
 
-Automated math and logic puzzle channel. English. YouTube (Shorts + weekly long-form), Instagram Reels, Facebook Reels. Budget $0. Public repo. Full plan: PLAN.md. Research cache: research/ (reuse if under 30 days old).
+Automated physics puzzle channel ("predict, then watch"). English. YouTube Shorts and Instagram Reels. Facebook and TikTok dropped. Weekly long-form is built but off (`LONGFORM_ENABLED`). Budget $0. Public repo. Full plan: PLAN.md. Research cache: research/ (reuse if under 30 days old).
 
 ## Rules that always apply
 - The daily pipeline is plain code. No Claude session, no extensions.
@@ -34,7 +34,7 @@ Node 22 + TypeScript (tsx), Remotion 4 for visuals, Python (kokoro-onnx) for voi
 - `src/voice/tts.py` Kokoro voice; `src/edit/mix.py` voice + generated SFX and music.
 - `src/script/` queue model, plan (weekly planner), wording (one LLM call, validated, template fallback).
 - `src/package/metadata.ts` per-platform text + AI disclosure.
-- `src/publish/` youtube, meta (Instagram + Facebook Reels), github (issues).
+- `src/publish/` youtube, meta (Instagram Reels via Instagram Login on graph.instagram.com; video hosted on a temporary GitHub release), github (issues).
 - `src/analytics/report.ts` weekly stats, family weights, report issue.
 - `src/cli/` make, batch, post, approve, longform, tokencheck.
 - `.github/workflows/` post (2x daily), weekly, publish-approved, token-check; `.github/actions/` setup, finish.
@@ -50,3 +50,4 @@ Node 22 + TypeScript (tsx), Remotion 4 for visuals, Python (kokoro-onnx) for voi
 - Post dry run on GitHub Actions passes: about 2 min warm, 2.5 min cold. Caches work.
 - GitHub Models returns a plain "OK" body (HTTP 200, text/plain) for every request from this repo, including the catalog. LLM wording therefore falls back to the template. Unresolved; do not spend time on it without new information.
 - Not yet tested: real uploads (no platform secrets yet), weekly workflow, publish-approved, login check.
+- Secrets: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN, IG_ACCESS_TOKEN, optional GH_ADMIN_TOKEN (lets the login check save the renewed Instagram token).

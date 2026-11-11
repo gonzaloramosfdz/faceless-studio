@@ -2,7 +2,7 @@
 // Usage: tsx src/analytics/report.ts
 import { localDate, writeJson, daysBetween } from '../core/util';
 import { openIssue } from '../publish/github';
-import { facebookStats, instagramStats } from '../publish/meta';
+import { instagramStats } from '../publish/meta';
 import * as youtube from '../publish/youtube';
 import { discoverIdeas } from '../script/plan';
 import { IDEA_GAP_DAYS, loadHistory, loadQueue, type Platform } from '../script/queue';
@@ -22,12 +22,11 @@ const safe = async <T>(name: string, fn: () => Promise<T>, fallback: T): Promise
 const stats = {
   youtube: await safe('youtube', () => youtube.stats(ids('youtube')), {}),
   instagram: await safe('instagram', () => instagramStats(ids('instagram')), {}),
-  facebook: await safe('facebook', () => facebookStats(ids('facebook')), {}),
 };
 
 const rows = recent.map((h) => {
   const v = (p: Platform) => stats[p][h.platforms[p]?.id ?? '']?.views ?? 0;
-  return { id: h.id, date: h.date, slot: h.slot, family: h.family, idea: h.idea, title: h.title, youtube: v('youtube'), instagram: v('instagram'), facebook: v('facebook'), total: v('youtube') + v('instagram') + v('facebook') };
+  return { id: h.id, date: h.date, slot: h.slot, family: h.family, idea: h.idea, title: h.title, youtube: v('youtube'), instagram: v('instagram'), total: v('youtube') + v('instagram') };
 });
 const week = rows.filter((r) => daysBetween(r.date, today) <= 7);
 const avg = (xs: number[]) => (xs.length ? Math.round(xs.reduce((a, b) => a + b, 0) / xs.length) : 0);
@@ -53,12 +52,12 @@ const table = (head: string[], body: (string | number)[][]) => [`| ${head.join('
 const md = [
   `# Weekly report, ${today}`,
   '',
-  `Posts in the last 7 days: **${week.length}**. Views counted so far: **${week.reduce((s, r) => s + r.total, 0)}** (YouTube ${week.reduce((s, r) => s + r.youtube, 0)}, Instagram ${week.reduce((s, r) => s + r.instagram, 0)}, Facebook ${week.reduce((s, r) => s + r.facebook, 0)}).`,
+  `Posts in the last 7 days: **${week.length}**. Views counted so far: **${week.reduce((s, r) => s + r.total, 0)}** (YouTube ${week.reduce((s, r) => s + r.youtube, 0)}, Instagram ${week.reduce((s, r) => s + r.instagram, 0)}).`,
   `Queue: ${queued} posts planned, ${waiting} waiting for your review.`,
   ideas < IDEA_GAP_DAYS * 2 ? `\n**Idea pool is too small:** ${ideas} ideas, but ${IDEA_GAP_DAYS * 2} are needed so none repeats within ${IDEA_GAP_DAYS} days. Add variants.` : `Idea pool: ${ideas} ideas (${IDEA_GAP_DAYS * 2} needed for the ${IDEA_GAP_DAYS}-day rule).`,
   '',
   '## This week, best first',
-  table(['Post', 'Idea', 'YouTube', 'Instagram', 'Facebook', 'Total'], [...week].sort((a, b) => b.total - a.total).map((r) => [r.id, r.idea, r.youtube, r.instagram, r.facebook, r.total])),
+  table(['Post', 'Idea', 'YouTube', 'Instagram', 'Total'], [...week].sort((a, b) => b.total - a.total).map((r) => [r.id, r.idea, r.youtube, r.instagram, r.total])),
   '',
   '## Last 28 days by family (average views per post)',
   table(['Family', 'Posts', 'Average'], families.map((f) => [f.k, f.posts, f.avg])),
@@ -66,7 +65,7 @@ const md = [
   '## Last 28 days by posting slot',
   table(['Slot', 'Posts', 'Average'], slots.map((s) => [s.k, s.posts, s.avg])),
   '',
-  'Views are the public counters at the time of this report; recent posts are still growing. Facebook and Instagram numbers may be missing if their insights API refused the request.',
+  'Views are the public counters at the time of this report; recent posts are still growing. Instagram numbers may be missing if its insights API refused the request.',
 ].join('\n');
 (await import('node:fs')).writeFileSync((await import('node:path')).join(import.meta.dirname, `../../data/analytics/${today}.md`), md + '\n');
 await openIssue(`Weekly report ${today}`, md, ['report']);
