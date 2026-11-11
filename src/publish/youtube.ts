@@ -11,9 +11,10 @@ export async function accessToken(): Promise<string> {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
-      client_id: process.env.YT_CLIENT_ID!,
-      client_secret: process.env.YT_CLIENT_SECRET!,
-      refresh_token: process.env.YT_REFRESH_TOKEN!,
+      // Trimmed: a stray space or line break from pasting would otherwise break the login.
+      client_id: process.env.YT_CLIENT_ID!.trim(),
+      client_secret: process.env.YT_CLIENT_SECRET!.trim(),
+      refresh_token: process.env.YT_REFRESH_TOKEN!.trim(),
       grant_type: 'refresh_token',
     }),
   });
@@ -83,6 +84,19 @@ export async function stats(ids: string[]): Promise<Record<string, { views: numb
 }
 
 /** Fails loudly if the refresh token has expired or been revoked. Used by the monthly token check. */
+/** Shape checks that reveal nothing secret: lengths, expected prefixes and stray whitespace. */
+export function describeSecrets(): string {
+  const id = process.env.YT_CLIENT_ID ?? '';
+  const sec = process.env.YT_CLIENT_SECRET ?? '';
+  const tok = process.env.YT_REFRESH_TOKEN ?? '';
+  const ws = (v: string) => (v !== v.trim() || /\s/.test(v) ? 'HAS WHITESPACE' : 'clean');
+  return [
+    `client id: ${id.length} chars, ${ws(id)}, ends with .apps.googleusercontent.com: ${id.trim().endsWith('.apps.googleusercontent.com')}, project number ${id.trim().split('-')[0].replace(/\d(?=\d{4})/g, '*')}, starts ${id.trim().split('-')[1]?.slice(0, 4) ?? '?'}`,
+    `client secret: ${sec.length} chars, ${ws(sec)}, starts with GOCSPX-: ${sec.trim().startsWith('GOCSPX-')}`,
+    `refresh token: ${tok.length} chars, ${ws(tok)}, starts with 1//: ${tok.trim().startsWith('1//')}`,
+  ].join('\n');
+}
+
 export async function check() {
   cached = undefined;
   await accessToken();

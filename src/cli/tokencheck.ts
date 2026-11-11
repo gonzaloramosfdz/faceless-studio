@@ -3,7 +3,7 @@
 import { execFileSync } from 'node:child_process';
 import { openIssue } from '../publish/github';
 import { refresh } from '../publish/meta';
-import { check as ytCheck } from '../publish/youtube';
+import { check as ytCheck, describeSecrets } from '../publish/youtube';
 import { PLATFORMS } from '../script/queue';
 
 const problems: string[] = [];
@@ -11,6 +11,7 @@ try {
   await ytCheck();
   console.log('YouTube login works');
 } catch (e) {
+  console.log(describeSecrets());
   problems.push(`YouTube: ${(e as Error).message}. Re-authorize and replace the YT_REFRESH_TOKEN secret (RUNBOOK.md, "Refresh tokens").`);
 }
 if (PLATFORMS.includes('instagram')) try {
