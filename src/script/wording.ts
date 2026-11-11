@@ -67,7 +67,7 @@ export async function wordBatch(items: { id: string; puzzle: Puzzle; lines: Line
   try {
     const res = await fetch(process.env.LLM_ENDPOINT || 'https://models.github.ai/inference/chat/completions', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
       body: JSON.stringify({
         model: process.env.LLM_MODEL || 'openai/gpt-4o-mini',
         response_format: { type: 'json_object' },
@@ -78,7 +78,13 @@ export async function wordBatch(items: { id: string; puzzle: Puzzle; lines: Line
       }),
     });
     if (!res.ok) throw new Error(`LLM status ${res.status}: ${(await res.text()).slice(0, 300)}`);
-    const data: any = await res.json();
+    const raw = await res.text();
+    let data: any;
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      throw new Error(`LLM reply was not JSON (status ${res.status}, ${res.headers.get('content-type')}): ${raw.slice(0, 200)}`);
+    }
     const parsed = JSON.parse(data.choices[0].message.content);
     let ok = 0;
     for (const it of items) {
