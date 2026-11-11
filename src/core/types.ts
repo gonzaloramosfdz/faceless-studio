@@ -14,7 +14,10 @@ export interface Line {
 export interface Puzzle<P = unknown> {
   family: string;
   seed: number;
-  /** Stable identity for dedup: family + the parameters that define the instance. */
+  /**
+   * Stable identity for dedup, always `family:variant:parameters...`.
+   * The first two parts (`family:variant`) name the idea; the scheduler never repeats an idea within 12 days.
+   */
   key: string;
   label: string;
   question: string;

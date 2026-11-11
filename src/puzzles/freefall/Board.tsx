@@ -1,13 +1,11 @@
 import React from 'react';
-import { interpolate, spring, useCurrentFrame } from 'remotion';
+
 import type { BoardProps } from '../../visuals/boards';
 import { theme } from '../../visuals/theme';
+import { COLORS, Choices, Fact, useSimTime } from '../../visuals/quiz';
 import type { FreefallParams } from './index';
 
-const COLORS = [theme.accent, '#5eead4'];
-
 export const FreefallBoard: React.FC<BoardProps> = ({ puzzle, timeline, size }) => {
-  const frame = useCurrentFrame();
   const p = puzzle.params as FreefallParams;
   const W = size;
   const H = size * 0.6;
@@ -20,10 +18,7 @@ export const FreefallBoard: React.FC<BoardProps> = ({ puzzle, timeline, size }) 
   const xScale = reach > 0 ? (W * 0.5) / reach : 0;
   const startX = reach > 0 ? [W * 0.24, W * 0.31] : [W * 0.32, W * 0.68];
 
-  // The drop plays while the "now watch" sentence is spoken.
-  const run = timeline.lines.find((l) => l.id === 's0')!;
-  const simT = interpolate(frame, [run.from + (run.to - run.from) * 0.55, run.to + 28], [0, tMax], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const answered = frame >= timeline.reveals[1];
+  const simT = useSimTime(timeline, tMax);
   const pos = (i: number, t: number) => {
     const b = p.bodies[i];
     const tt = Math.min(t, b.lands);
@@ -63,34 +58,8 @@ export const FreefallBoard: React.FC<BoardProps> = ({ puzzle, timeline, size }) 
           </div>
         ))}
       </div>
-      <div style={{ display: 'flex', gap: size * 0.025 }}>
-        {puzzle.options!.map((o, i) => {
-          const right = answered && i === puzzle.answerIndex;
-          const s = right ? spring({ frame: frame - timeline.reveals[1], fps: 30, config: { damping: 8 } }) : 1;
-          return (
-            <div
-              key={i}
-              style={{
-                padding: `${size * 0.022}px ${size * 0.035}px`,
-                borderRadius: size * 0.03,
-                border: `4px solid ${right ? theme.good : theme.line}`,
-                background: right ? theme.good : theme.panel,
-                color: right ? theme.bg : theme.text,
-                opacity: answered && !right ? 0.35 : 1,
-                transform: `scale(${0.9 + 0.1 * s})`,
-                fontFamily: theme.font,
-                fontWeight: 800,
-                fontSize: size * 0.05,
-              }}
-            >
-              {o}
-            </div>
-          );
-        })}
-      </div>
-      <div style={{ height: size * 0.07, fontFamily: theme.font, fontWeight: 800, fontSize: size * 0.05, color: theme.accent, opacity: frame >= timeline.reveals[2] ? 1 : 0 }}>
-        {p.fact}
-      </div>
+      <Choices puzzle={puzzle} timeline={timeline} size={size} />
+      <Fact text={p.fact} timeline={timeline} size={size} />
     </div>
   );
 };
