@@ -20,7 +20,7 @@ export function templateWording(p: Puzzle, lines: Line[]): Wording {
   const setup = p.question.split(/(?<=[.?!])\s/)[0].replace(/\.$/, '');
   return {
     lines,
-    title: trim(`${p.label.replace(/[?:]$/, '')}? ${setup}`, 90),
+    title: trim(`${/[?!]$/.test(p.label) ? p.label : p.label + ':'} ${setup}`, 90),
     description: `${p.question}\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\n${DISCLOSURE}`,
     tags: [...BASE_TAGS, p.family.replace(/-/g, '')],
     source: 'template',
