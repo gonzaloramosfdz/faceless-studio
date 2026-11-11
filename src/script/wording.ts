@@ -65,26 +65,45 @@ export async function wordBatch(items: { id: string; puzzle: Puzzle; lines: Line
     return out;
   }
   try {
-    const res = await fetch(process.env.LLM_ENDPOINT || 'https://models.github.ai/inference/chat/completions', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
-      body: JSON.stringify({
-        model: process.env.LLM_MODEL || 'openai/gpt-4o-mini',
+    const model = process.env.LLM_MODEL || 'openai/gpt-4o-mini';
+    const body = (m: string) =>
+      JSON.stringify({
+        model: m,
         response_format: { type: 'json_object' },
         messages: [
           { role: 'system', content: SYSTEM },
           { role: 'user', content: JSON.stringify(items.map((it) => ({ id: it.id, question: it.puzzle.question, answer: it.puzzle.answer, lines: it.lines.map((l) => l.text) }))) },
         ],
-      }),
-    });
-    if (!res.ok) throw new Error(`LLM status ${res.status}: ${(await res.text()).slice(0, 300)}`);
-    const raw = await res.text();
+      });
+    // Two documented GitHub Models endpoints; the second is the older one and takes the model name without its publisher.
+    const endpoints: [string, string][] = process.env.LLM_ENDPOINT
+      ? [[process.env.LLM_ENDPOINT, model]]
+      : [
+          ['https://models.github.ai/inference/chat/completions', model],
+          ['https://models.inference.ai.azure.com/chat/completions', model.split('/').pop()!],
+        ];
     let data: any;
-    try {
-      data = JSON.parse(raw);
-    } catch {
-      throw new Error(`LLM reply was not JSON (status ${res.status}, ${res.headers.get('content-type')}): ${raw.slice(0, 200)}`);
+    const failures: string[] = [];
+    for (const [url, m] of endpoints) {
+      const res = await fetch(url, {
+        method: 'POST',
+        redirect: 'manual',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
+        body: body(m),
+      });
+      const raw = await res.text();
+      try {
+        const j = JSON.parse(raw);
+        if (res.ok && j.choices) {
+          data = j;
+          break;
+        }
+        failures.push(`${new URL(url).host}: status ${res.status}: ${raw.slice(0, 200)}`);
+      } catch {
+        failures.push(`${new URL(url).host}: status ${res.status}, ${res.headers.get('content-type')}, location ${res.headers.get('location')}: ${raw.slice(0, 120)}`);
+      }
     }
+    if (!data) throw new Error(failures.join(' || '));
     const parsed = JSON.parse(data.choices[0].message.content);
     let ok = 0;
     for (const it of items) {
