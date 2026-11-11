@@ -85,12 +85,19 @@ export async function wordBatch(items: { id: string; puzzle: Puzzle; lines: Line
     let data: any;
     const failures: string[] = [];
     for (const [url, m] of endpoints) {
-      const res = await fetch(url, {
-        method: 'POST',
-        redirect: 'manual',
-        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
-        body: body(m),
-      });
+      let res: Response;
+      try {
+        res = await fetch(url, {
+          method: 'POST',
+          redirect: 'manual',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
+          body: body(m),
+        });
+      } catch (e) {
+        const cause = (e as any).cause;
+        failures.push(`${new URL(url).host}: network error ${cause?.code ?? ''} ${cause?.message ?? (e as Error).message}`);
+        continue;
+      }
       const raw = await res.text();
       try {
         const j = JSON.parse(raw);
