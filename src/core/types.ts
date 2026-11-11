@@ -24,6 +24,9 @@ export interface Puzzle<P = unknown> {
   stepCount: number;
   /** Seconds of thinking time before the solution. Default 6. */
   thinkSeconds?: number;
+  /** Multiple-choice puzzles: the choices shown on screen and the index of the right one. */
+  options?: string[];
+  answerIndex?: number;
 }
 
 export interface Family<P = unknown> {
