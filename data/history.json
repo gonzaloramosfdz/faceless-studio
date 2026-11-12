@@ -1,0 +1,67 @@
+[
+ {
+  "id": "2026-11-13-1",
+  "date": "2026-11-13",
+  "slot": 1,
+  "family": "motion",
+  "seed": 1024677649,
+  "key": "motion:meeting:ships:127.5:40:45",
+  "idea": "motion:meeting",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two ships start 127.5 kilometers apart and head straight toward each other."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "One moves at 40 kilometers per hour, the other at 45. How far has the first one gone when they meet?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Forget the two separate trips. Together they close the gap at 40 plus 45, which is 85 kilometers per hour."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "So they meet after 127.5 divided by 85, which is 1.5 hours."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "In that time the first one covers 40 times 1.5, which is 60 kilometers."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "When two things move toward each other, add their speeds. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Speed trap: Two ships start 127.5 km apart and head straight toward each other, one at…",
+  "description": "Two ships start 127.5 km apart and head straight toward each other, one at 40 km/h and the other at 45 km/h. How far has the first one gone when they meet?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "motion"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "YKWfjWVDEoQ",
+    "url": "https://youtu.be/YKWfjWVDEoQ"
+   }
+  },
+  "seconds": 52.03333333333333,
+  "runId": "43236892057",
+  "issue": 7
+ }
+]
