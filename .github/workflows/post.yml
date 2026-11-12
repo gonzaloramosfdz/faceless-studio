@@ -13,6 +13,10 @@ on:
       id:
         description: Queue id to post (blank = next due)
         required: false
+      count:
+        description: How many queued posts to publish now, ignoring their planned dates
+        required: false
+        default: "1"
 
 permissions:
   contents: write
@@ -29,7 +33,7 @@ jobs:
     # The schedule only runs once the repo variable SCHEDULE_ENABLED is set to "true".
     if: github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
     env:
       GH_TOKEN: ${{ github.token }}
       GITHUB_TOKEN: ${{ github.token }}
@@ -45,6 +49,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           PLATFORMS: ${{ vars.PLATFORMS || 'youtube' }}
           POST_ID: ${{ inputs.id }}
+          COUNT: ${{ inputs.count || '1' }}
         run: |
           set -o pipefail
           args=()
@@ -54,8 +59,12 @@ jobs:
             # A dry run on an empty queue plans one day first; nothing is committed.
             npx tsx src/cli/batch.ts --days 1 --start "$(TZ=America/Monterrey date +%F)" 2>&1 | tee run.log
           fi
+          [ "${COUNT:-1}" -gt 1 ] && args+=(--any-date)
           run() { npx tsx src/cli/post.ts "${args[@]}" 2>&1 | tee -a run.log; }
-          run || { echo "First attempt failed; retrying once in 60 s"; sleep 60; run; }
+          for i in $(seq 1 "${COUNT:-1}"); do
+            echo "--- post $i of ${COUNT:-1}"
+            run || { echo "First attempt failed; retrying once in 60 s"; sleep 60; run; }
+          done
       - name: Keep video for review
         if: always()
         uses: actions/upload-artifact@v4

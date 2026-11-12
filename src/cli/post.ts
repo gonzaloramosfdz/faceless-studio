@@ -1,5 +1,6 @@
 // Twice-daily job: render the next due puzzle and publish it (or send it to the review queue).
-// Usage: tsx src/cli/post.ts [--dry-run] [--id 2026-11-16-1]
+// Usage: tsx src/cli/post.ts [--dry-run] [--id 2026-11-16-1] [--any-date]
+// --any-date posts the next queued item even if its planned date is in the future (used to post several at once).
 // Safe to run twice: platforms that already succeeded for an item are skipped.
 import { rmSync } from 'node:fs';
 import { renderVideo } from '../core/render';
@@ -14,7 +15,7 @@ const dry = flag('dry-run');
 const queue = loadQueue();
 const today = localDate();
 const wanted = arg('id');
-const item = wanted ? queue.find((q) => q.id === wanted) : queue.filter((q) => q.status === 'queued' && q.date <= today).sort((a, b) => a.id.localeCompare(b.id))[0];
+const item = wanted ? queue.find((q) => q.id === wanted) : queue.filter((q) => q.status === 'queued' && (flag('any-date') || q.date <= today)).sort((a, b) => a.id.localeCompare(b.id))[0];
 if (!item) {
   console.log(`nothing due (today is ${today}, ${queue.filter((q) => q.status === 'queued').length} items queued)`);
   process.exit(queue.some((q) => q.status === 'queued') || dry ? 0 : 1); // an empty queue is a real failure
