@@ -1,9 +1,11 @@
 name: Post
-# Renders one puzzle and publishes it. Runs twice a day; times are in UTC (Monterrey is UTC-6 all year).
+# Renders one puzzle and publishes it. Runs four times a day; times are in UTC (Monterrey is UTC-6 all year).
 on:
   schedule:
-    - cron: "30 17 * * *" # 11:30 Monterrey
-    - cron: "30 23 * * *" # 17:30 Monterrey
+    - cron: "30 14 * * *" # 08:30 Monterrey, slot 1
+    - cron: "30 18 * * *" # 12:30 Monterrey, slot 2
+    - cron: "30 23 * * *" # 17:30 Monterrey, slot 3
+    - cron: "0 3 * * *"   # 21:00 Monterrey, slot 4
   workflow_dispatch:
     inputs:
       dry_run:

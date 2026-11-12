@@ -2,20 +2,21 @@
 import { families } from '../puzzles/registry';
 import { rng } from '../core/rng';
 import { daysBetween } from '../core/util';
-import { IDEA_GAP_DAYS, ideaOf, type QueueItem } from './queue';
+import { categoryOf } from '../core/categories';
+import { IDEA_GAP_DAYS, MAX_PER_CATEGORY_PER_DAY, SLOTS, ideaOf, type QueueItem } from './queue';
 
 /** Families in the daily rotation. Others stay in the code but are not scheduled. */
 export const ROTATION_EXCLUDE = new Set(['magic-square']);
 
 export interface PlanInput {
-  dates: string[]; // days to fill, two slots each
+  dates: string[]; // days to fill, one post per slot (see SLOTS)
   past: Pick<QueueItem, 'key' | 'idea' | 'date' | 'family'>[]; // history + still-queued items
   weights: Record<string, number>; // family -> weight from analytics, default 1
   seedBase: number;
 }
 export interface Planned {
   date: string;
-  slot: 1 | 2;
+  slot: 1 | 2 | 3 | 4;
   family: string;
   seed: number;
   key: string;
@@ -46,10 +47,12 @@ export function plan(input: PlanInput): { items: Planned[]; warnings: string[] }
 
   for (const date of input.dates) {
     const today = new Set<string>();
-    for (const slot of [1, 2] as const) {
+    const perCategory = new Map<string, number>();
+    for (const slot of SLOTS) {
       // Rest time of each idea in days; an idea never used counts as fully rested.
       const scored = [...ideas.entries()]
-        .filter(([, v]) => !today.has(v.family))
+        // A family appears once a day and no category more than MAX_PER_CATEGORY_PER_DAY times.
+        .filter(([, v]) => !today.has(v.family) && (perCategory.get(categoryOf(v.family)) ?? 0) < MAX_PER_CATEGORY_PER_DAY)
         .map(([idea, v]) => {
           const last = lastUsed.get(idea);
           const rest = last ? daysBetween(last, date) : 999;
@@ -82,6 +85,7 @@ export function plan(input: PlanInput): { items: Planned[]; warnings: string[] }
       usedKeys.add(chosen.key);
       lastUsed.set(chosen.idea, date);
       today.add(chosen.family);
+      perCategory.set(categoryOf(chosen.family), (perCategory.get(categoryOf(chosen.family)) ?? 0) + 1);
       items.push(chosen);
     }
   }

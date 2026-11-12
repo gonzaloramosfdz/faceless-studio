@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion';
 import type { VideoProps } from '../core/types';
 import { theme } from './theme';
+import { lookOf } from '../core/categories';
 import { Captions } from './Captions';
 import { boards } from './boards';
 
@@ -56,6 +57,7 @@ export const Shell: React.FC<VideoProps> = ({ puzzle, timeline, layout }) => {
   const frame = useCurrentFrame();
   const portrait = layout !== 'landscape';
   const Board = boards[puzzle.family];
+  const look = lookOf(puzzle.family);
   const progress = frame / timeline.durationInFrames;
   const intro = interpolate(frame, [0, 12], [0, 1], { extrapolateRight: 'clamp' });
   const counting = frame >= timeline.countdown.from && frame < timeline.countdown.to;
@@ -68,8 +70,8 @@ export const Shell: React.FC<VideoProps> = ({ puzzle, timeline, layout }) => {
           display: 'inline-block',
           padding: '12px 28px',
           borderRadius: 999,
-          background: theme.accent,
-          color: theme.bg,
+          background: look.badge,
+          color: look.bg,
           fontFamily: theme.font,
           fontWeight: 800,
           fontSize: portrait ? 34 : 30,
@@ -108,12 +110,12 @@ export const Shell: React.FC<VideoProps> = ({ puzzle, timeline, layout }) => {
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 50% 35%, ${theme.bg2} 0%, ${theme.bg} 70%)`,
+        background: `radial-gradient(circle at 50% 35%, ${look.bg2} 0%, ${look.bg} 70%)`,
       }}
     >
       <AbsoluteFill
         style={{
-          backgroundImage: `radial-gradient(${theme.line} 2px, transparent 2px)`,
+          backgroundImage: `radial-gradient(${look.dot} 2px, transparent 2px)`,
           backgroundSize: '54px 54px',
           opacity: 0.25,
         }}
@@ -134,7 +136,7 @@ export const Shell: React.FC<VideoProps> = ({ puzzle, timeline, layout }) => {
           </div>
         </AbsoluteFill>
       )}
-      <div style={{ position: 'absolute', top: 0, left: 0, height: 10, width: `${progress * 100}%`, background: theme.accent }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, height: 10, width: `${progress * 100}%`, background: look.badge }} />
     </AbsoluteFill>
   );
 };

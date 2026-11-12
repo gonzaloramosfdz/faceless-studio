@@ -19,7 +19,7 @@ export interface PlatformResult {
 export interface QueueItem {
   id: string; // date-slot, e.g. 2026-11-16-1
   date: string;
-  slot: 1 | 2;
+  slot: 1 | 2 | 3 | 4;
   family: string;
   seed: number;
   key: string;
@@ -37,6 +37,11 @@ export interface QueueItem {
   seconds?: number;
 }
 
+/** Daily posting slots and their Monterrey times. The cron lines in .github/workflows/post.yml must match (UTC = Monterrey + 6 h). */
+export const SLOTS = [1, 2, 3, 4] as const;
+export const SLOT_TIMES: Record<number, string> = { 1: '08:30', 2: '12:30', 3: '17:30', 4: '21:00' };
+/** Most posts from one category (physics, logic, math, chance) in a single day. */
+export const MAX_PER_CATEGORY_PER_DAY = 2;
 export const IDEA_GAP_DAYS = 12;
 export const REVIEW_POSTS = 5;
 

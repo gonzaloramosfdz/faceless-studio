@@ -5,7 +5,8 @@ import { openIssue } from '../publish/github';
 import { instagramStats } from '../publish/meta';
 import * as youtube from '../publish/youtube';
 import { discoverIdeas } from '../script/plan';
-import { IDEA_GAP_DAYS, PLATFORMS, loadHistory, loadQueue, type Platform } from '../script/queue';
+import { categoryOf } from '../core/categories';
+import { IDEA_GAP_DAYS, PLATFORMS, SLOT_TIMES, loadHistory, loadQueue, type Platform } from '../script/queue';
 
 const today = localDate();
 const history = loadHistory();
@@ -36,14 +37,15 @@ const by = <K extends string>(key: (r: (typeof rows)[number]) => K) => {
   return [...m.entries()].map(([k, v]) => ({ k, posts: v.length, avg: avg(v) })).sort((a, b) => b.avg - a.avg);
 };
 const families = by((r) => r.family);
-const slots = by((r) => `slot ${r.slot}` as string);
+const slots = by((r) => `slot ${r.slot} (${SLOT_TIMES[r.slot] ?? '?'})` as string);
+const categories = by((r) => categoryOf(r.family) as string);
 
 // Families that do better get scheduled a little more often; the range is kept narrow so variety holds.
 const overall = avg(rows.map((r) => r.total)) || 1;
 const weights: Record<string, number> = {};
 if (rows.length >= 14) for (const f of families) weights[f.k] = Math.min(1.4, Math.max(0.7, f.avg / overall));
 writeJson('weights.json', weights);
-writeJson(`analytics/${today}.json`, { date: today, rows, families, slots, weights });
+writeJson(`analytics/${today}.json`, { date: today, rows, families, categories, slots, weights });
 
 const ideas = discoverIdeas().size;
 const queued = loadQueue().filter((q) => q.status === 'queued').length;
@@ -61,6 +63,9 @@ const md = [
   '',
   '## Last 28 days by family (average views per post)',
   table(['Family', 'Posts', 'Average'], families.map((f) => [f.k, f.posts, f.avg])),
+  '',
+  '## Last 28 days by category (average views per post)',
+  table(['Category', 'Posts', 'Average'], categories.map((c) => [c.k, c.posts, c.avg])),
   '',
   '## Last 28 days by posting slot',
   table(['Slot', 'Posts', 'Average'], slots.map((s) => [s.k, s.posts, s.avg])),
