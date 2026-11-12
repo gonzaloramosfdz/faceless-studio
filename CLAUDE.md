@@ -49,5 +49,8 @@ Node 22 + TypeScript (tsx), Remotion 4 for visuals, Python (kokoro-onnx) for voi
 - Repo: github.com/gonzaloramosfdz/faceless-studio (public). `gh` GraphQL is blocked in Claude sessions: use `gh api` REST calls.
 - Post dry run on GitHub Actions passes: about 2 min warm, 2.5 min cold. Caches work.
 - GitHub Models returns a plain "OK" body (HTTP 200, text/plain) for every request from this repo, including the catalog. LLM wording therefore falls back to the template. Unresolved; do not spend time on it without new information.
-- Not yet tested: real uploads (no platform secrets yet), weekly workflow, publish-approved, login check.
-- Secrets: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN, IG_ACCESS_TOKEN, optional GH_ADMIN_TOKEN (lets the login check save the renewed Instagram token).
+- Tested live on 2026-11-12: login check, weekly batch (14 posts planned), post (private YouTube upload + review issue), publish-approved (first video made public; YouTube review counter is 1 of 5).
+- Not yet tested: Instagram path, long-form, a scheduled (cron) run.
+- Google OAuth app is still in "Testing": the refresh token expires 7 days after 2026-11-12. Owner must publish the app (needs GitHub Pages on /docs for home page and privacy policy links), then make a new client secret and refresh token.
+- The session proxy blocks GitHub secrets, variables and Pages API paths: the owner sets `SCHEDULE_ENABLED`, `PLATFORMS`, `LONGFORM_ENABLED` and Pages by hand.
+- Secrets: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN; later IG_ACCESS_TOKEN and optional GH_ADMIN_TOKEN.
