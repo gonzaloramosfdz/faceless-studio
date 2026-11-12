@@ -52,8 +52,17 @@
    "motion"
   ],
   "wording": "template",
-  "status": "queued",
-  "platforms": {}
+  "status": "review",
+  "platforms": {
+   "youtube": {
+    "state": "private",
+    "id": "YKWfjWVDEoQ",
+    "url": "https://youtu.be/YKWfjWVDEoQ"
+   }
+  },
+  "seconds": 52.03333333333333,
+  "runId": "43236892057",
+  "issue": 7
  },
  {
   "id": "2026-11-13-2",
