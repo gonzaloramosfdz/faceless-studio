@@ -1,7 +1,165 @@
 {
  "date": "2026-11-12",
- "rows": [],
- "families": [],
- "slots": [],
+ "rows": [
+  {
+   "id": "2026-11-13-1",
+   "date": "2026-11-13",
+   "slot": 1,
+   "family": "motion",
+   "idea": "motion:meeting",
+   "title": "Speed trap: Two ships start 127.5 km apart and head straight toward each other, one at…",
+   "youtube": 2,
+   "instagram": 0,
+   "total": 2
+  },
+  {
+   "id": "2026-11-13-2",
+   "date": "2026-11-13",
+   "slot": 2,
+   "family": "ramp-race",
+   "idea": "ramp-race:steep-shallow",
+   "title": "Which is faster at the bottom? Two frictionless ramps are 5 m high",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-14-1",
+   "date": "2026-11-14",
+   "slot": 1,
+   "family": "collision",
+   "idea": "collision:cradle",
+   "title": "How many swing out? 5 identical steel balls hang in a row, touching",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-14-2",
+   "date": "2026-11-14",
+   "slot": 2,
+   "family": "projectile",
+   "idea": "projectile:cliff",
+   "title": "Which hits harder? On a 60 m cliff, ball A is thrown straight down at 15 m/s and ball B…",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-15-1",
+   "date": "2026-11-15",
+   "slot": 1,
+   "family": "pendulum",
+   "idea": "pendulum:moon",
+   "title": "Where does it swing slower? A pendulum with a 1.5 m string and a 5 kg bob swings on Earth",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-15-2",
+   "date": "2026-11-15",
+   "slot": 2,
+   "family": "freefall",
+   "idea": "freefall:higher",
+   "title": "How much longer? Stone A falls from 20 m",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-16-1",
+   "date": "2026-11-16",
+   "slot": 1,
+   "family": "gears",
+   "idea": "gears:speed",
+   "title": "How many turns? A gear with 21 teeth drives a gear with 14 teeth, and the teeth do not…",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-16-2",
+   "date": "2026-11-16",
+   "slot": 2,
+   "family": "projectile",
+   "idea": "projectile:hang-time",
+   "title": "Which stays up longer? Two balls are launched from level ground at the same speed, 10…",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-17-1",
+   "date": "2026-11-17",
+   "slot": 1,
+   "family": "pendulum",
+   "idea": "pendulum:mass",
+   "title": "Which swings faster? Two pendulums have strings of the same length, 3 m",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  },
+  {
+   "id": "2026-11-17-2",
+   "date": "2026-11-17",
+   "slot": 2,
+   "family": "freefall",
+   "idea": "freefall:sideways",
+   "title": "Which lands first? Ball A is dropped from 20 m",
+   "youtube": 0,
+   "instagram": 0,
+   "total": 0
+  }
+ ],
+ "families": [
+  {
+   "k": "motion",
+   "posts": 1,
+   "avg": 2
+  },
+  {
+   "k": "ramp-race",
+   "posts": 1,
+   "avg": 0
+  },
+  {
+   "k": "collision",
+   "posts": 1,
+   "avg": 0
+  },
+  {
+   "k": "projectile",
+   "posts": 2,
+   "avg": 0
+  },
+  {
+   "k": "pendulum",
+   "posts": 2,
+   "avg": 0
+  },
+  {
+   "k": "freefall",
+   "posts": 2,
+   "avg": 0
+  },
+  {
+   "k": "gears",
+   "posts": 1,
+   "avg": 0
+  }
+ ],
+ "slots": [
+  {
+   "k": "slot 1",
+   "posts": 5,
+   "avg": 0
+  },
+  {
+   "k": "slot 2",
+   "posts": 5,
+   "avg": 0
+  }
+ ],
  "weights": {}
 }
