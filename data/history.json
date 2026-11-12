@@ -63,5 +63,572 @@
   "seconds": 52.03333333333333,
   "runId": "43236892057",
   "issue": 7
+ },
+ {
+  "id": "2026-11-13-2",
+  "date": "2026-11-13",
+  "slot": 2,
+  "family": "ramp-race",
+  "seed": 1780656838,
+  "key": "ramp-race:steep-shallow:A:5:50:30",
+  "idea": "ramp-race:steep-shallow",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two frictionless ramps have the same height. One is steep, one is shallow. Two identical balls are released from the top at the same moment."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which ball is moving faster when it reaches the bottom?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "They are moving equally fast, at 10 meters per second. The ball on the steep ramp just gets there sooner, after 1.3 seconds against 2 seconds."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "The speed a ball gains depends only on how far it drops, because the height it loses turns into speed. Both drop the same height, so both end up equally fast. The steep ramp just gets there sooner."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Same drop, same speed. Only the arrival time differs. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which is faster at the bottom? Two frictionless ramps are 5 m high",
+  "description": "Two frictionless ramps are 5 m high. Ramp A is steep (50°), ramp B is shallow (30°). Identical balls start from rest at the top. Which is moving faster at the bottom?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "ramprace"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "LRr70NtYB_A",
+    "url": "https://youtu.be/LRr70NtYB_A"
+   }
+  },
+  "seconds": 55.233333333333334
+ },
+ {
+  "id": "2026-11-14-1",
+  "date": "2026-11-14",
+  "slot": 1,
+  "family": "collision",
+  "seed": 1809198489,
+  "key": "collision:cradle:5:2:40:4 balls|3 balls|2 balls",
+  "idea": "collision:cradle",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Five identical steel balls hang in a row, touching. Two balls are pulled back and released. The collisions are perfectly elastic."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "How many balls swing out on the other side?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Two balls swing out, the same number that went in."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Equal balls swap speeds when they collide. So each hit passes the motion down the row, and the balls at the end leave with exactly the speed of the ones that arrived."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Same number in, same number out. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "How many swing out? 5 identical steel balls hang in a row, touching",
+  "description": "5 identical steel balls hang in a row, touching. 2 balls are pulled back and released. Perfectly elastic collisions, no friction. How many balls swing out on the other side?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "collision"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "X7_-tTsQGc8",
+    "url": "https://youtu.be/X7_-tTsQGc8"
+   }
+  },
+  "seconds": 42.93333333333333
+ },
+ {
+  "id": "2026-11-14-2",
+  "date": "2026-11-14",
+  "slot": 2,
+  "family": "projectile",
+  "seed": 828594226,
+  "key": "projectile:cliff:15:60:down-up:Same speed|Ball B|Ball A",
+  "idea": "projectile:cliff",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "From the top of a 60 meter cliff, one ball is thrown straight up and another straight down, both at 15 meters per second. No air resistance."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one hits the ground at the higher speed?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Same speed. Both hit the ground at about 37 meters per second."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "The ball thrown up rises, stops, and falls back past the edge moving downward at its original speed. From there it is identical to the ball thrown down."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "The direction of the throw does not change the impact speed. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which hits harder? On a 60 m cliff, ball A is thrown straight down at 15 m/s and ball B…",
+  "description": "On a 60 m cliff, ball A is thrown straight down at 15 m/s and ball B straight up at 15 m/s. No air resistance. Which hits the ground at the higher speed?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "projectile"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "LBtRr5PG8S0",
+    "url": "https://youtu.be/LBtRr5PG8S0"
+   }
+  },
+  "seconds": 47.266666666666666
+ },
+ {
+  "id": "2026-11-15-1",
+  "date": "2026-11-15",
+  "slot": 1,
+  "family": "pendulum",
+  "seed": 160564548,
+  "key": "pendulum:moon:1.5:5:B:10:On Earth|On the Moon|Same",
+  "idea": "pendulum:moon",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "The same pendulum is set swinging twice, once on Earth and once on the Moon, from the same small angle. On the Moon, gravity is about one sixth as strong."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Where does it swing slower?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "On the Moon. One swing takes about 6 seconds there, against about 2.5 seconds on Earth."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "With weaker gravity, the pull back toward the middle is weaker, so each swing takes longer. Here it takes about two and a half times as long."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Same string, same bob, different world, different pace. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Where does it swing slower? A pendulum with a 1.5 m string and a 5 kg bob swings on Earth",
+  "description": "A pendulum with a 1.5 m string and a 5 kg bob swings on Earth. An identical pendulum swings on the Moon, where gravity is weaker. Pendulum A is on the Moon, pendulum B is on Earth. Both are released from the same small angle. No air resistance. Where does it swing slower?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "pendulum"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "ZrpZbEOXFUI",
+    "url": "https://youtu.be/ZrpZbEOXFUI"
+   }
+  },
+  "seconds": 46.93333333333333
+ },
+ {
+  "id": "2026-11-15-2",
+  "date": "2026-11-15",
+  "slot": 2,
+  "family": "freefall",
+  "seed": 147123360,
+  "key": "freefall:higher:stone:20:4:16× longer|4× longer|2× longer",
+  "idea": "freefall:higher",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two objects are dropped. The second one starts four times higher than the first."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "How many times longer does it take to reach the ground?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The low one lands after 2 seconds, the high one after 4 seconds. Only two times longer."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "A falling object keeps speeding up, so it covers the extra height quickly. Fall time grows with the square root of the height, and the square root of four is two."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Four times the height, two times the wait. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "How much longer? Stone A falls from 20 m",
+  "description": "Stone A falls from 20 m. Stone B falls from 80 m, which is 4 times higher. How much longer does B take to land? No air resistance.\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "freefall"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "wHWpGYXzqeU",
+    "url": "https://youtu.be/wHWpGYXzqeU"
+   }
+  },
+  "seconds": 43.6
+ },
+ {
+  "id": "2026-11-16-1",
+  "date": "2026-11-16",
+  "slot": 1,
+  "family": "gears",
+  "seed": 1941560435,
+  "key": "gears:speed:21:14",
+  "idea": "gears:speed",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A gear with 21 teeth drives a gear with 14 teeth. Their teeth mesh with no slipping."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "When the first gear makes one full turn, how many turns does the second gear make?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The second gear makes one and a half turns."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "In one turn, 21 teeth of the first gear pass the meshing point, so 21 teeth of the second gear move past as well. That is 21 out of 14 teeth, which is one and a half turns."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "A smaller gear always spins faster. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "How many turns? A gear with 21 teeth drives a gear with 14 teeth, and the teeth do not…",
+  "description": "A gear with 21 teeth drives a gear with 14 teeth, and the teeth do not slip. When the first gear makes one full turn, how many turns does the second make?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "gears"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "L70PgIzcJwQ",
+    "url": "https://youtu.be/L70PgIzcJwQ"
+   }
+  },
+  "seconds": 45.4
+ },
+ {
+  "id": "2026-11-16-2",
+  "date": "2026-11-16",
+  "slot": 2,
+  "family": "projectile",
+  "seed": 570539752,
+  "key": "projectile:hang-time:10:25-65:Ball B|Same time|Ball A",
+  "idea": "projectile:hang-time",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two balls are launched at the same speed, 10 meters per second. Ball A goes up at 25 degrees, ball B at 65 degrees. No air resistance."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one stays in the air longer?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Ball B, the steeper one, stays up 1.8 seconds, against 0.9 seconds."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Air time depends only on the upward part of the speed. The steeper launch has more of it, so the ball climbs higher and takes longer to come back down."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Steeper means more hang time, even though the distance can be the same. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which stays up longer? Two balls are launched from level ground at the same speed, 10…",
+  "description": "Two balls are launched from level ground at the same speed, 10 m/s: A at 25°, B at 65°. No air resistance. Which stays in the air longer?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "projectile"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "15UcYa6yRSg",
+    "url": "https://youtu.be/15UcYa6yRSg"
+   }
+  },
+  "seconds": 49.06666666666667
+ },
+ {
+  "id": "2026-11-17-1",
+  "date": "2026-11-17",
+  "slot": 1,
+  "family": "pendulum",
+  "seed": 42491135,
+  "key": "pendulum:mass:3:0.1:10:10",
+  "idea": "pendulum:mass",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two pendulums have strings of the same length. Pendulum A carries a bob of 0.1 kilograms. Pendulum B carries a bob of 10 kilograms. Both are released together from the same small angle."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one swings faster?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Neither. They swing at exactly the same rate, about 3.5 seconds for one full swing."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "A heavier bob is pulled harder by gravity, but it is also harder to get moving. The two effects cancel exactly, so the mass makes no difference."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Only the length of the string and the strength of gravity set the pace. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which swings faster? Two pendulums have strings of the same length, 3 m",
+  "description": "Two pendulums have strings of the same length, 3 m. Bob A has a mass of 0.1 kg, bob B has a mass of 10 kg. Both are released together from the same small angle. No air resistance. Which swings faster, meaning which takes less time for one full swing back and forth?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "pendulum"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "uPxyUTM-588",
+    "url": "https://youtu.be/uPxyUTM-588"
+   }
+  },
+  "seconds": 51.766666666666666
+ },
+ {
+  "id": "2026-11-17-2",
+  "date": "2026-11-17",
+  "slot": 2,
+  "family": "freefall",
+  "seed": 1375732810,
+  "key": "freefall:sideways:ball:20:30",
+  "idea": "freefall:sideways",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "One ball is dropped from 20 meters. At the same instant, another is launched sideways at 30 meters per second from the same height."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one hits the ground first?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "They land at the same time, after 2 seconds."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Moving sideways does not slow the fall. Gravity only pulls downward, so both drop at exactly the same rate."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Sideways motion and falling are independent. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which lands first? Ball A is dropped from 20 m",
+  "description": "Ball A is dropped from 20 m. At the same instant, ball B is thrown sideways at 30 m/s from the same height. No air resistance.\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "freefall"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "f9xALpbK2Qw",
+    "url": "https://youtu.be/f9xALpbK2Qw"
+   }
+  },
+  "seconds": 39.233333333333334
  }
 ]
