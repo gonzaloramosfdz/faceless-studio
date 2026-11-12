@@ -9,6 +9,8 @@ import { ProjectileBoard } from '../puzzles/projectile/Board';
 import { CollisionBoard } from '../puzzles/collision/Board';
 import { RampRaceBoard } from '../puzzles/ramp-race/Board';
 import { PendulumBoard } from '../puzzles/pendulum/Board';
+import { MakeNumberBoard } from '../puzzles/make-number/Board';
+import { LiarsBoard } from '../puzzles/liars/Board';
 
 export type BoardProps = { puzzle: Puzzle<any>; timeline: Timeline; size: number };
 
@@ -23,4 +25,6 @@ export const boards: Record<string, React.FC<BoardProps>> = {
   collision: CollisionBoard,
   'ramp-race': RampRaceBoard,
   pendulum: PendulumBoard,
+  'make-number': MakeNumberBoard,
+  liars: LiarsBoard,
 };

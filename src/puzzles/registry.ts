@@ -8,6 +8,8 @@ import { projectile } from './projectile';
 import { collision } from './collision';
 import { rampRace } from './ramp-race';
 import { pendulum } from './pendulum';
+import { makeNumber } from './make-number';
+import { liars } from './liars';
 
 export const families: Record<string, Family<any>> = {
   [magicSquare.id]: magicSquare,
@@ -19,4 +21,6 @@ export const families: Record<string, Family<any>> = {
   [collision.id]: collision,
   [rampRace.id]: rampRace,
   [pendulum.id]: pendulum,
+  [makeNumber.id]: makeNumber,
+  [liars.id]: liars,
 };
