@@ -61,5 +61,6 @@ jobs:
       - uses: ./.github/actions/finish
         if: always()
         with:
+          status: ${{ job.status }}
           commit: ${{ env.DRY != 'true' }}
           message: Weekly batch and report

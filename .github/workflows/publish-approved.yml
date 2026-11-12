@@ -48,4 +48,5 @@ jobs:
       - uses: ./.github/actions/finish
         if: always()
         with:
+          status: ${{ job.status }}
           message: Approve ${{ inputs.id }}

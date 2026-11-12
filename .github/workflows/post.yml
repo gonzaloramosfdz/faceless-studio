@@ -61,9 +61,16 @@ jobs:
           fi
           [ "${COUNT:-1}" -gt 1 ] && args+=(--any-date)
           run() { npx tsx src/cli/post.ts "${args[@]}" 2>&1 | tee -a run.log; }
+          attempt() { set +e; run; code=$?; set -e; }
           for i in $(seq 1 "${COUNT:-1}"); do
             echo "--- post $i of ${COUNT:-1}"
-            run || { echo "First attempt failed; retrying once in 60 s"; sleep 60; run; }
+            attempt
+            if [ "$code" -eq 3 ]; then echo "::warning::YouTube daily upload limit reached; remaining posts stay queued."; break; fi
+            if [ "$code" -ne 0 ]; then
+              echo "First attempt failed; retrying once in 60 s"; sleep 60; attempt
+              [ "$code" -eq 3 ] && break
+              [ "$code" -ne 0 ] && exit "$code"
+            fi
           done
       - name: Keep video for review
         if: always()
@@ -76,5 +83,6 @@ jobs:
       - uses: ./.github/actions/finish
         if: always()
         with:
+          status: ${{ job.status }}
           commit: ${{ env.DRY != 'true' }}
           message: Record post

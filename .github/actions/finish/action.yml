@@ -7,6 +7,9 @@ inputs:
   message:
     description: Commit message.
     default: Update pipeline data
+  status:
+    description: Pass job.status so a failed job opens an issue.
+    default: success
 runs:
   using: composite
   steps:
@@ -21,7 +24,7 @@ runs:
           git pull -q --rebase
           git push -q
         fi
-    - if: failure()
+    - if: always() && inputs.status == 'failure'
       shell: bash
       run: |
         step=$(gh run view "$GITHUB_RUN_ID" --json jobs -q '[.jobs[].steps[] | select(.conclusion=="failure") | .name][0]' 2>/dev/null || true)

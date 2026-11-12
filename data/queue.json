@@ -1,7 +1,7 @@
 [
  {
-  "id": "2026-11-18-1",
-  "date": "2026-11-18",
+  "id": "2026-11-13-1",
+  "date": "2026-11-13",
   "slot": 1,
   "family": "gears",
   "seed": 1364157356,
@@ -52,18 +52,13 @@
    "gears"
   ],
   "wording": "template",
-  "status": "failed",
-  "platforms": {
-   "youtube": {
-    "state": "error",
-    "error": "POST https://www.googleapis.com/upload/youtube/v3/videos -> 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The user has exceeded the number of videos they may upload.\",\n    \"errors\": [\n      {\n        \"message\": \"The user has exceeded the number of videos they may upload.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"uploadLimitExceeded\"\n      }\n    ]\n  }\n}\n"
-   }
-  },
+  "status": "queued",
+  "platforms": {},
   "seconds": 44.06666666666667
  },
  {
-  "id": "2026-11-18-2",
-  "date": "2026-11-18",
+  "id": "2026-11-13-2",
+  "date": "2026-11-13",
   "slot": 2,
   "family": "ramp-race",
   "seed": 1397563944,
@@ -104,7 +99,7 @@
     "text": "Same ramp, same start, but the shape decides the race. Follow for a new puzzle every day."
    }
   ],
-  "title": "Which reaches the bottom first? A solid sphere (A) and a hollow sphere (B) with the same…",
+  "title": "Which reaches the bottom first? A solid sphere (A) and a hollow sphere (B) with the same\u2026",
   "description": "A solid sphere (A) and a hollow sphere (B) with the same mass and radius roll down the same ramp. Hollow ones are thin-walled. Both start from rest together and roll without slipping. Which reaches the bottom first?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
   "tags": [
    "physics",
@@ -114,18 +109,13 @@
    "ramprace"
   ],
   "wording": "template",
-  "status": "failed",
-  "platforms": {
-   "youtube": {
-    "state": "error",
-    "error": "POST https://www.googleapis.com/upload/youtube/v3/videos -> 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The user has exceeded the number of videos they may upload.\",\n    \"errors\": [\n      {\n        \"message\": \"The user has exceeded the number of videos they may upload.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"uploadLimitExceeded\"\n      }\n    ]\n  }\n}\n"
-   }
-  },
+  "status": "queued",
+  "platforms": {},
   "seconds": 49.2
  },
  {
-  "id": "2026-11-19-1",
-  "date": "2026-11-19",
+  "id": "2026-11-14-1",
+  "date": "2026-11-14",
   "slot": 1,
   "family": "ramp-race",
   "seed": 12911722,
@@ -180,8 +170,8 @@
   "platforms": {}
  },
  {
-  "id": "2026-11-19-2",
-  "date": "2026-11-19",
+  "id": "2026-11-14-2",
+  "date": "2026-11-14",
   "slot": 2,
   "family": "collision",
   "seed": 1232804660,
@@ -222,7 +212,7 @@
     "text": "A heavy ball can launch a light one at nearly twice its own speed. Follow for a new puzzle every day."
    }
   ],
-  "title": "How fast does it leave? A heavy ball (5 kg) moving at 3 m/s hits a light ball (0.5 kg)…",
+  "title": "How fast does it leave? A heavy ball (5 kg) moving at 3 m/s hits a light ball (0.5 kg)\u2026",
   "description": "A heavy ball (5 kg) moving at 3 m/s hits a light ball (0.5 kg) at rest, head-on. Perfectly elastic, frictionless track. How fast does the light ball leave?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
   "tags": [
    "physics",

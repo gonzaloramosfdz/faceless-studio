@@ -15,7 +15,7 @@ const dry = flag('dry-run');
 const queue = loadQueue();
 const today = localDate();
 const wanted = arg('id');
-const item = wanted ? queue.find((q) => q.id === wanted) : queue.filter((q) => q.status === 'queued' && (flag('any-date') || q.date <= today)).sort((a, b) => a.id.localeCompare(b.id))[0];
+const item = wanted ? queue.find((q) => q.id === wanted) : queue.filter((q) => (q.status === 'queued' || q.status === 'failed') && (flag('any-date') || q.date <= today)).sort((a, b) => a.id.localeCompare(b.id))[0];
 if (!item) {
   console.log(`nothing due (today is ${today}, ${queue.filter((q) => q.status === 'queued').length} items queued)`);
   process.exit(queue.some((q) => q.status === 'queued') || dry ? 0 : 1); // an empty queue is a real failure
@@ -63,6 +63,14 @@ if (!PLATFORMS.includes('instagram')) {
 }
 
 const waiting = PLATFORMS.filter((p) => ['private', 'held'].includes(item.platforms[p]?.state ?? ''));
+if (errors.some((e) => e.includes('uploadLimitExceeded'))) {
+  // YouTube's own daily cap for the channel. Not a fault: the post stays queued and goes out on a later run.
+  item.status = 'queued';
+  delete item.platforms.youtube;
+  save();
+  console.log('YouTube daily upload limit reached for this channel; this post stays queued.');
+  process.exit(3);
+}
 if (errors.length) {
   item.status = 'failed';
   save();
