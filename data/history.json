@@ -693,5 +693,68 @@
    }
   },
   "seconds": 44.06666666666667
+ },
+ {
+  "id": "2026-11-13-2",
+  "date": "2026-11-13",
+  "slot": 2,
+  "family": "ramp-race",
+  "seed": 1397563944,
+  "key": "ramp-race:rolling:solid-sphere:hollow-sphere:same:20:4",
+  "idea": "ramp-race:rolling",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A solid sphere and a hollow sphere, with the same mass and radius, are released together at the top of the same ramp. They roll without slipping."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one reaches the bottom first?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The solid sphere wins. It takes 1.8 seconds, against 2 seconds."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "A rolling object has to spin as well as move down the ramp, and spinning takes energy. The solid sphere has more of its mass near the middle, so less energy goes into spinning and more into moving down."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Same ramp, same start, but the shape decides the race. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which reaches the bottom first? A solid sphere (A) and a hollow sphere (B) with the same…",
+  "description": "A solid sphere (A) and a hollow sphere (B) with the same mass and radius roll down the same ramp. Hollow ones are thin-walled. Both start from rest together and roll without slipping. Which reaches the bottom first?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "ramprace"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "xJhN6OlpAhQ",
+    "url": "https://youtu.be/xJhN6OlpAhQ"
+   }
+  },
+  "seconds": 49.2
  }
 ]
