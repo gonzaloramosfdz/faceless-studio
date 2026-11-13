@@ -630,5 +630,68 @@
    }
   },
   "seconds": 39.233333333333334
+ },
+ {
+  "id": "2026-11-13-1",
+  "date": "2026-11-13",
+  "slot": 1,
+  "family": "gears",
+  "seed": 1364157356,
+  "key": "gears:direction:6:12-16-14-14-14-14",
+  "idea": "gears:direction",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "6 gears are meshed in a row, and their teeth do not slip. The first gear turns clockwise."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which way does the last gear turn?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The last gear turns counter-clockwise, the opposite way from the first."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Two meshed gears always turn opposite ways, so every mesh flips the direction. With 6 gears there are 5 meshes. 5 flips leave one flip over, so the last gear is reversed."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "An odd number of gears gives the same direction. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which way does it turn? 6 gears are meshed in a row, and the teeth do not slip",
+  "description": "6 gears are meshed in a row, and the teeth do not slip. The first gear turns clockwise. Which way does the last gear turn?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "gears"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "LIFZ_HXcLLw",
+    "url": "https://youtu.be/LIFZ_HXcLLw"
+   }
+  },
+  "seconds": 44.06666666666667
  }
 ]
