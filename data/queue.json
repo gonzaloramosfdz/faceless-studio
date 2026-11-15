@@ -794,5 +794,801 @@
   "wording": "template",
   "status": "queued",
   "platforms": {}
+ },
+ {
+  "id": "2026-11-22-1",
+  "date": "2026-11-22",
+  "slot": 1,
+  "family": "ramp-race",
+  "seed": 1101622731,
+  "key": "ramp-race:dip:B:1.2:0.3:5:0.55",
+  "idea": "ramp-race:dip",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two frictionless tracks start at the same height and end at the same height. Track A is straight. Track B dips down in the middle and climbs back up. Two balls are released together."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which ball reaches the finish first?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Ball B wins, the one on the dipped track. It takes 2 seconds, against 2.4 seconds for the straight one."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "The dip lets the ball drop lower, so it builds up more speed. Its path is longer, but the extra speed more than makes up for it."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "A longer path can be the faster path. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which ball wins? Two frictionless tracks start 1.2 m up and end 0.3 m up",
+  "description": "Two frictionless tracks start 1.2 m up and end 0.3 m up. Track A is straight. Track B dips in the middle and climbs back. Two balls start from rest together. Which reaches the finish first?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "ramprace"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-22-2",
+  "date": "2026-11-22",
+  "slot": 2,
+  "family": "collision",
+  "seed": 1867798189,
+  "key": "collision:cradle:5:1:30:2 balls|4 balls|1 ball",
+  "idea": "collision:cradle",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Five identical steel balls hang in a row, touching. One ball is pulled back and released. The collisions are perfectly elastic."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "How many balls swing out on the other side?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "One ball swings out, the same number that went in."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Equal balls swap speeds when they collide. So each hit passes the motion down the row, and the balls at the end leave with exactly the speed of the ones that arrived."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Same number in, same number out. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "How many swing out? 5 identical steel balls hang in a row, touching",
+  "description": "5 identical steel balls hang in a row, touching. 1 ball is pulled back and released. Perfectly elastic collisions, no friction. How many balls swing out on the other side?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "collision"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-23-1",
+  "date": "2026-11-23",
+  "slot": 1,
+  "family": "ramp-race",
+  "seed": 64733866,
+  "key": "ramp-race:rolling:solid-cylinder:solid-sphere:same:20:4",
+  "idea": "ramp-race:rolling",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A solid cylinder and a solid sphere, with the same mass and radius, are released together at the top of the same ramp. They roll without slipping."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one reaches the bottom first?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The solid sphere wins. It takes 1.8 seconds, against 1.9 seconds."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "A rolling object has to spin as well as move down the ramp, and spinning takes energy. The solid sphere has more of its mass near the middle, so less energy goes into spinning and more into moving down."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Same ramp, same start, but the shape decides the race. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which reaches the bottom first? A solid cylinder (A) and a solid sphere (B) with the…",
+  "description": "A solid cylinder (A) and a solid sphere (B) with the same mass and radius roll down the same ramp. Both start from rest together and roll without slipping. Which reaches the bottom first?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "ramprace"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-23-2",
+  "date": "2026-11-23",
+  "slot": 2,
+  "family": "gears",
+  "seed": 1701234436,
+  "key": "gears:direction:4:12-16-12-10",
+  "idea": "gears:direction",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "4 gears are meshed in a row, and their teeth do not slip. The first gear turns clockwise."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which way does the last gear turn?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The last gear turns counter-clockwise, the opposite way from the first."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Two meshed gears always turn opposite ways, so every mesh flips the direction. With 4 gears there are 3 meshes. 3 flips leave one flip over, so the last gear is reversed."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "An odd number of gears gives the same direction. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which way does it turn? 4 gears are meshed in a row, and the teeth do not slip",
+  "description": "4 gears are meshed in a row, and the teeth do not slip. The first gear turns clockwise. Which way does the last gear turn?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "gears"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-24-1",
+  "date": "2026-11-24",
+  "slot": 1,
+  "family": "ramp-race",
+  "seed": 1588351969,
+  "key": "ramp-race:steep-shallow:B:0.8:65:15",
+  "idea": "ramp-race:steep-shallow",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two frictionless ramps have the same height. One is steep, one is shallow. Two identical balls are released from the top at the same moment."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which ball is moving faster when it reaches the bottom?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "They are moving equally fast, at 4 meters per second. The ball on the steep ramp just gets there sooner, after 0.4 seconds against 1.5 seconds."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "The speed a ball gains depends only on how far it drops, because the height it loses turns into speed. Both drop the same height, so both end up equally fast. The steep ramp just gets there sooner."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Same drop, same speed. Only the arrival time differs. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which is faster at the bottom? Two frictionless ramps are 0.8 m high",
+  "description": "Two frictionless ramps are 0.8 m high. Ramp B is steep (65°), ramp A is shallow (15°). Identical balls start from rest at the top. Which is moving faster at the bottom?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "ramprace"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-24-2",
+  "date": "2026-11-24",
+  "slot": 2,
+  "family": "collision",
+  "seed": 495906393,
+  "key": "collision:sticky:1:3:24:6 m/s|12 m/s|16 m/s",
+  "idea": "collision:sticky",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A 1 kilogram cart rolls at 24 meters per second into a 3 kilogram cart at rest. They stick together. The track has no friction."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "How fast do they move afterward?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "6 meters per second. That is one quarter of the original speed."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "The total motion is kept, but now it is shared by more mass. So the speed drops by the same factor that the mass grows."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "When carts stick, the speed shrinks as the mass grows. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "How fast after? Cart A (1 kg) rolls at 24 m/s into cart B (3 kg) at rest",
+  "description": "Cart A (1 kg) rolls at 24 m/s into cart B (3 kg) at rest. They stick together. Frictionless track. How fast do they move after?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "collision"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-25-1",
+  "date": "2026-11-25",
+  "slot": 1,
+  "family": "motion",
+  "seed": 308611907,
+  "key": "motion:meeting:ships:280:25:45",
+  "idea": "motion:meeting",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two ships start 280 kilometers apart and head straight toward each other."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "One moves at 25 kilometers per hour, the other at 45. How far has the first one gone when they meet?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Forget the two separate trips. Together they close the gap at 25 plus 45, which is 70 kilometers per hour."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "So they meet after 280 divided by 70, which is 4 hours."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "In that time the first one covers 25 times 4, which is 100 kilometers."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "When two things move toward each other, add their speeds. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Speed trap: Two ships start 280 km apart and head straight toward each other, one at 25…",
+  "description": "Two ships start 280 km apart and head straight toward each other, one at 25 km/h and the other at 45 km/h. How far has the first one gone when they meet?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "motion"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-25-2",
+  "date": "2026-11-25",
+  "slot": 2,
+  "family": "gears",
+  "seed": 1363349938,
+  "key": "gears:speed:12:36",
+  "idea": "gears:speed",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A gear with 12 teeth drives a gear with 36 teeth. Their teeth mesh with no slipping."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "When the first gear makes one full turn, how many turns does the second gear make?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The second gear makes a third of a turn."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "In one turn, 12 teeth of the first gear pass the meshing point, so 12 teeth of the second gear move past as well. That is 12 out of 36 teeth, which is a third of a turn."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "A bigger gear always turns slower. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "How many turns? A gear with 12 teeth drives a gear with 36 teeth, and the teeth do not…",
+  "description": "A gear with 12 teeth drives a gear with 36 teeth, and the teeth do not slip. When the first gear makes one full turn, how many turns does the second make?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "gears"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-26-1",
+  "date": "2026-11-26",
+  "slot": 1,
+  "family": "projectile",
+  "seed": 1296831891,
+  "key": "projectile:cliff:10:40:down-up:Same speed|Ball A|Ball B",
+  "idea": "projectile:cliff",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "From the top of a 40 meter cliff, one ball is thrown straight up and another straight down, both at 10 meters per second. No air resistance."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one hits the ground at the higher speed?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Same speed. Both hit the ground at about 30 meters per second."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "The ball thrown up rises, stops, and falls back past the edge moving downward at its original speed. From there it is identical to the ball thrown down."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "The direction of the throw does not change the impact speed. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which hits harder? On a 40 m cliff, ball A is thrown straight down at 10 m/s and ball B…",
+  "description": "On a 40 m cliff, ball A is thrown straight down at 10 m/s and ball B straight up at 10 m/s. No air resistance. Which hits the ground at the higher speed?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "projectile"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-26-2",
+  "date": "2026-11-26",
+  "slot": 2,
+  "family": "seesaw",
+  "seed": 1860521488,
+  "key": "seesaw:where-to-sit:9@4:8",
+  "idea": "seesaw:where-to-sit",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A weightless seesaw rests on its pivot. 9 kilograms sit 4 meters from the pivot on the left. You place 8 kilograms on the other side."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "How far from the pivot must it sit to balance?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "It must sit 4.5 meters from the pivot."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Balance means equal turning effect, which is weight times distance. The first side gives 9 times 4, which is 36. The other side gives 8 times 4.5, which is 36 as well."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "A lighter weight must sit farther out. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Where must it sit? A weightless seesaw has 9 kg sitting 4 m from the pivot on the left",
+  "description": "A weightless seesaw has 9 kg sitting 4 m from the pivot on the left. How far from the pivot must 8 kg sit on the other side to balance it?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "seesaw"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-27-1",
+  "date": "2026-11-27",
+  "slot": 1,
+  "family": "motion",
+  "seed": 1972988055,
+  "key": "motion:round-trip:car:120:120:60",
+  "idea": "motion:round-trip",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A car travels 120 kilometers at 120 kilometers per hour, then comes back the same way at 60."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "What is its average speed for the whole trip? Careful, the obvious answer is wrong."
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "The tempting answer is halfway between the two speeds, 90. But the car spends more time at the slower speed, so that leg counts for more."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Going out takes 120 divided by 120, which is 1 hour."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Coming back takes 120 divided by 60, which is 2 hours."
+   },
+   {
+    "id": "s3",
+    "kind": "step",
+    "step": 3,
+    "text": "That is 240 kilometers in 3 hours."
+   },
+   {
+    "id": "s4",
+    "kind": "step",
+    "step": 4,
+    "text": "So the average speed is 80 kilometers per hour, not 90."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Average speed is total distance over total time. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Speed trap: A car travels 120 km at 120 km/h, then returns the same way at 60 km/h",
+  "description": "A car travels 120 km at 120 km/h, then returns the same way at 60 km/h. What is its average speed for the whole trip?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "motion"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-27-2",
+  "date": "2026-11-27",
+  "slot": 2,
+  "family": "freefall",
+  "seed": 1732796421,
+  "key": "freefall:higher:ball:20:4:4× longer|16× longer|2× longer",
+  "idea": "freefall:higher",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Two objects are dropped. The second one starts four times higher than the first."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "How many times longer does it take to reach the ground?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The low one lands after 2 seconds, the high one after 4 seconds. Only two times longer."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "A falling object keeps speeding up, so it covers the extra height quickly. Fall time grows with the square root of the height, and the square root of four is two."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Four times the height, two times the wait. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "How much longer? Ball A falls from 20 m",
+  "description": "Ball A falls from 20 m. Ball B falls from 80 m, which is 4 times higher. How much longer does B take to land? No air resistance.\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "freefall"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-28-1",
+  "date": "2026-11-28",
+  "slot": 1,
+  "family": "seesaw",
+  "seed": 1097187500,
+  "key": "seesaw:which-side:7@1|6@4",
+  "idea": "seesaw:which-side",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "A weightless seesaw rests on its pivot. On the left, 7 kilograms sit 1 meter out. On the right, 6 kilograms sit 4 meters out."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which side goes down, or does it balance?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The right side goes down."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "What counts is weight times distance. Left: 7 times 1 is 7. Right: 6 times 4 is 24. The right side has the bigger total, so it goes down."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "Distance counts as much as weight. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which side goes down? A weightless seesaw rests on a pivot",
+  "description": "A weightless seesaw rests on a pivot. Left side: 7 kg at 1 m from the pivot. Right side: 6 kg at 4 m from the pivot. Which side goes down?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "seesaw"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
+ },
+ {
+  "id": "2026-11-28-2",
+  "date": "2026-11-28",
+  "slot": 2,
+  "family": "projectile",
+  "seed": 53761833,
+  "key": "projectile:best-angle:25:45-70-20",
+  "idea": "projectile:best-angle",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Three balls are launched at the same speed, 25 meters per second, at 45, 70 and 20 degrees. No air resistance."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Which one lands farthest away?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "Ball A, launched at 45 degrees, goes farthest, about 64 meters."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Aiming too low wastes flight time. Aiming too high wastes forward speed. Forty-five degrees balances the two."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "On flat ground, forty-five degrees gives the longest throw. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Which goes farthest? Three balls are launched from level ground at 25 m/s: A at 45°, B…",
+  "description": "Three balls are launched from level ground at 25 m/s: A at 45°, B at 70°, C at 20°. No air resistance. Which lands farthest away?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "projectile"
+  ],
+  "wording": "template",
+  "status": "queued",
+  "platforms": {}
  }
 ]

@@ -1,1 +1,9 @@
-{}
+{
+ "ramp-race": 1.4,
+ "collision": 1.4,
+ "gears": 1.15625,
+ "motion": 0.7,
+ "pendulum": 0.7,
+ "freefall": 0.7,
+ "projectile": 0.7
+}
