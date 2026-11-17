@@ -1209,5 +1209,68 @@
    }
   },
   "seconds": 43.53333333333333
+ },
+ {
+  "id": "2026-11-17-2",
+  "date": "2026-11-17",
+  "slot": 2,
+  "family": "gears",
+  "seed": 1219906104,
+  "key": "gears:loop:4:12",
+  "idea": "gears:loop",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "4 equal gears sit in a square, and each one meshes with the two beside it. The first gear is pushed to turn."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Can the gears turn?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "They all turn freely."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "The directions alternate around the ring: clockwise, counter-clockwise, clockwise, counter-clockwise. The last gear then fits against the first, because they already turn opposite ways."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "A ring with an even number of gears turns fine. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Can they turn? Four equal gears sit in a square, and each one meshes with the two beside…",
+  "description": "Four equal gears sit in a square, and each one meshes with the two beside it. Teeth do not slip. The first gear is pushed to turn. Can the gears turn?\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "gears"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "neEnEoC4LJI",
+    "url": "https://youtu.be/neEnEoC4LJI"
+   }
+  },
+  "seconds": 41.46666666666667
  }
 ]
