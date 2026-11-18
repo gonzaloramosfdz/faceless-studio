@@ -1272,5 +1272,68 @@
    }
   },
   "seconds": 41.46666666666667
+ },
+ {
+  "id": "2026-11-18-1",
+  "date": "2026-11-18",
+  "slot": 1,
+  "family": "gears",
+  "seed": 1438054503,
+  "key": "gears:idler:20:12:10",
+  "idea": "gears:idler",
+  "lines": [
+   {
+    "id": "h1",
+    "kind": "hook",
+    "text": "Three gears are meshed in a row. The first has 20 teeth, the last has 10 teeth, and the middle one has 12 teeth."
+   },
+   {
+    "id": "h2",
+    "kind": "hook",
+    "text": "Compared with meshing the first and last gears directly, how fast does the last gear turn?"
+   },
+   {
+    "id": "s0",
+    "kind": "step",
+    "step": 0,
+    "text": "Lock in your answer. Now watch what actually happens."
+   },
+   {
+    "id": "s1",
+    "kind": "step",
+    "step": 1,
+    "text": "The last gear turns at exactly the same speed. Only its direction changes."
+   },
+   {
+    "id": "s2",
+    "kind": "step",
+    "step": 2,
+    "text": "Every tooth that passes on the first gear passes on the middle gear, and then on the last gear. The middle gear's size cancels out, so only the first and last tooth counts matter, 20 and 10."
+   },
+   {
+    "id": "f1",
+    "kind": "final",
+    "text": "A middle gear can change direction, but never speed. Follow for a new puzzle every day."
+   }
+  ],
+  "title": "Does the middle gear matter? Gear A (20 teeth) drives gear C (10 teeth) through a middle…",
+  "description": "Gear A (20 teeth) drives gear C (10 teeth) through a middle gear B (12 teeth). Compared with A meshing with C directly, how fast does C turn? Ignore direction. Teeth do not slip.\n\nPause, pick your answer, then watch what really happens.\nA new physics puzzle twice a day.\n\nVoice and script assistance are AI-generated. The physics is computed and checked by code.",
+  "tags": [
+   "physics",
+   "puzzle",
+   "science",
+   "brainteaser",
+   "gears"
+  ],
+  "wording": "template",
+  "status": "published",
+  "platforms": {
+   "youtube": {
+    "state": "published",
+    "id": "btzDaR5LhvE",
+    "url": "https://youtu.be/btzDaR5LhvE"
+   }
+  },
+  "seconds": 50.9
  }
 ]
