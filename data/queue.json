@@ -52,8 +52,14 @@
    "freefall"
   ],
   "wording": "template",
-  "status": "queued",
-  "platforms": {}
+  "status": "failed",
+  "platforms": {
+   "youtube": {
+    "state": "error",
+    "error": "POST https://oauth2.googleapis.com/token -> 400: {\n  \"error\": \"invalid_grant\",\n  \"error_description\": \"Token has been expired or revoked.\"\n}"
+   }
+  },
+  "seconds": 43.36666666666667
  },
  {
   "id": "2026-11-19-2",
