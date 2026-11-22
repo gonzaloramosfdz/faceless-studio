@@ -52,8 +52,14 @@
    "collision"
   ],
   "wording": "template",
-  "status": "queued",
-  "platforms": {}
+  "status": "failed",
+  "platforms": {
+   "youtube": {
+    "state": "error",
+    "error": "POST https://oauth2.googleapis.com/token -> 400: {\n  \"error\": \"invalid_grant\",\n  \"error_description\": \"Token has been expired or revoked.\"\n}"
+   }
+  },
+  "seconds": 44.63333333333333
  },
  {
   "id": "2026-11-20-1",
